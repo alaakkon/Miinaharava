@@ -1,3 +1,5 @@
+package runko;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,13 +40,13 @@ public class LaudanLuominen {
         this.pel = new int[korkeus + 2][leveys + 2];
     }
 
-    public LaudanLuominen() {
-        this.leveys = leveys;
-        this.korkeus = leveys;
-        this.vaikeustaso = vaikeustaso;
-        this.peli = new int[korkeus][leveys];
-        this.lauta2 = new ArrayList<Integer>();
-    }
+//    public LaudanLuominen() {
+//        this.leveys = leveys;
+//        this.korkeus = leveys;
+//        this.vaikeustaso = vaikeustaso;
+//        this.peli = new int[korkeus][leveys];
+//        this.lauta2 = new ArrayList<Integer>();
+//    }
 
     public int[][] luoLauta() {
 
@@ -81,8 +83,8 @@ public class LaudanLuominen {
 
     public int[][] merkitseVierustat() {
 
-        for (int q = 0; q < 9; q++) {
-            for (int w = 0; w < 8; w++) {
+        for (int q = 0; q < korkeus; q++) {
+            for (int w = 0; w < leveys-1; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q][w + 1] != 9) {//oikealla
                         peli[q][w + 1] = peli[q][w + 1] + 1;
@@ -90,8 +92,8 @@ public class LaudanLuominen {
                 }
             }
         }
-        for (int q = 1; q < 9; q++) {
-            for (int w = 0; w < 9; w++) {
+        for (int q = 1; q < korkeus; q++) {
+            for (int w = 0; w < leveys; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q - 1][w] != 9) {//ylhäällä
                         peli[q - 1][w] = peli[q - 1][w] + 1;
@@ -99,8 +101,8 @@ public class LaudanLuominen {
                 }
             }
         }
-        for (int q = 0; q < 9; q++) {
-            for (int w = 0; w < 8; w++) {
+        for (int q = 0; q < korkeus; q++) {
+            for (int w = 0; w < leveys-1; w++) {
                 if (peli[q][w + 1] == 9) {// miina
                     if (peli[q][w] != 9) {//vasemmalla
                         peli[q][w] = peli[q][w] + 1;
@@ -109,8 +111,8 @@ public class LaudanLuominen {
             }
         }
 
-        for (int q = 0; q < 8; q++) {
-            for (int w = 0; w < 9; w++) {
+        for (int q = 0; q < korkeus-1; q++) {
+            for (int w = 0; w < leveys; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q + 1][w] != 9) {//alhaalla
                         peli[q + 1][w] = peli[q + 1][w] + 1;
@@ -118,8 +120,8 @@ public class LaudanLuominen {
                 }
             }
         }
-        for (int q = 1; q < 9; q++) {
-            for (int w = 1; w < 9; w++) {
+        for (int q = 1; q < korkeus; q++) {
+            for (int w = 1; w < leveys; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q - 1][w - 1] != 9) {//ylävasemmalla
                         peli[q - 1][w - 1] = peli[q - 1][w - 1] + 1;
@@ -128,8 +130,8 @@ public class LaudanLuominen {
             }
         }
 
-        for (int q = 1; q < 9; q++) {
-            for (int w = 0; w < 8; w++) {
+        for (int q = 1; q < korkeus; q++) {
+            for (int w = 0; w < leveys-1; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q - 1][w + 1] != 9) {//yläoikealla
                         peli[q - 1][w + 1] = peli[q - 1][w + 1] + 1;
@@ -137,8 +139,8 @@ public class LaudanLuominen {
                 }
             }
         }
-        for (int q = 0; q < 8; q++) {
-            for (int w = 1; w < 9; w++) {
+        for (int q = 0; q < korkeus-1; q++) {
+            for (int w = 1; w < leveys; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q + 1][w - 1] != 9) {//alavasen
                         peli[q + 1][w - 1] = peli[q + 1][w - 1] + 1;
@@ -146,8 +148,8 @@ public class LaudanLuominen {
                 }
             }
         }
-        for (int q = 0; q < 8; q++) {
-            for (int w = 0; w < 8; w++) {
+        for (int q = 0; q < korkeus-1; q++) {
+            for (int w = 0; w < leveys-1; w++) {
                 if (peli[q][w] == 9) {// miina
                     if (peli[q + 1][w + 1] != 9) {//alaoikea
                         peli[q + 1][w + 1] = peli[q + 1][w + 1] + 1;
@@ -164,15 +166,7 @@ public class LaudanLuominen {
         return peli;
     }
 
-    public boolean onkoMiina(int x, int y) {
-        int onko = peli[x][y];
-        if (onko == 9) {
-            return false;
-        } else {
-            return true;
-        }
-
-    }
+    
 
     public void tulosta() { //Tämä vielä tässä , siirretään kayttikseen
         for (int i = 0; i < peli.length; i++) {
