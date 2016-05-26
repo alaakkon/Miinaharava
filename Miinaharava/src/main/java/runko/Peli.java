@@ -1,6 +1,5 @@
 package runko;
 
-
 import runko.LaudanLuominen;
 
 /*
@@ -8,7 +7,6 @@ import runko.LaudanLuominen;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author anna
@@ -62,7 +60,7 @@ public class Peli {
 
     public int[][] tyhjanVieressa(int y, int x) {
         if (peli[y][x] == 0) {
-            pelilauta[y][x]=0;
+            pelilauta[y][x] = 0;
 
             for (int j = y + 1; j <= korkeus; j++) {
                 if (peli[j][x] == 0) {
