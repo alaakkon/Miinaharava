@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 3,
-             Errors: 0,
+      <title>File: 4,
+             Errors: 7,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#runko.LaudanLuominen.java">runko/LaudanLuominen.java</a>
+                  <a href="${project.url}/checkstyle.html#miinaharava.logiikka.Peli.java">miinaharava/logiikka/Peli.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#runko.Peli.java">runko/Peli.java</a>
+                  <a href="${project.url}/checkstyle.html#miinaharava.logiikka.LaudanLuominen.java">miinaharava/logiikka/LaudanLuominen.java</a>
                 </td>
                 <td>
                   0
@@ -69,12 +69,26 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  5
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#runko.Main.java">runko/Main.java</a>
+                  <a href="${project.url}/checkstyle.html#miinaharava.logiikka.Ruutu.java">miinaharava/logiikka/Ruutu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#miinaharava.main.Main.java">miinaharava/main/Main.java</a>
                 </td>
                 <td>
                   0
