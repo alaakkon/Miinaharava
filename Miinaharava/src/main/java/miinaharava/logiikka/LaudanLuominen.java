@@ -104,6 +104,7 @@ public class LaudanLuominen {
         for (int a = 0; a < korkeus; a++) {
             for (int b = 0; b < leveys; b++) {
                 if (pelilauta[a][b].haeTila() == 9) {
+
                     int x_alku = Math.max(b - 1, 0);
                     int x_loppu = Math.min(b + 1, leveys - 1);
                     int y_alku = Math.max(a - 1, 0);
@@ -117,6 +118,26 @@ public class LaudanLuominen {
                             }
                         }
                     }
+
+                    merkitse(a, b);
+                }
+            }
+
+        }
+    }
+
+    public void merkitse(int a, int b) {
+        int x_alku = Math.max(b - 1, 0);
+        int x_loppu = Math.min(b + 1, leveys - 1);
+        int y_alku = Math.max(a - 1, 0);
+        int y_loppu = Math.min(a + 1, korkeus - 1);
+
+        for (int i = y_alku; i <= y_loppu; i++) {
+            for (int j = x_alku; j <= x_loppu; j++) {
+                if (pelilauta[i][j].haeTila() != 9) {
+                    int l = pelilauta[i][j].haeTila();
+                    pelilauta[i][j].muutaTila(l + 1);
+
                 }
             }
         }
