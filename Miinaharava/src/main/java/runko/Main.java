@@ -4,39 +4,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int x = 0;
-        int y = 0;
-        LaudanLuominen l = new LaudanLuominen(5, 5);
-        l.arvoMiinatLaudalle();
-        l.merkitseVierustat();
-        int[][] peli = l.haePelilauta();
-
-        l.tulosta();
-        for (int i = 1; i < 4; i++) {
-            System.out.println("");
-
-            for (int j = 1; j < 4; j++) {
-                System.out.print(peli[i][j]);
-            }
-        }
-        for (int i = 1; i < 4; i++) {
-            for (int j = 1; j < 4; j++) {
-                if (peli[i][j] == 9) {
-                    y = i;
-                    x = j;
-                    break;
-
-                }
-            }
-
-        }
-        System.out.println("");
-        System.out.println(y + "," + x);
-
-        if (peli[y][x] == 0) {
-            System.out.println("ei");
-        } else {
-            System.out.println("juu");
-        }
+        LaudanLuominen peli = new LaudanLuominen(5, 5);
+        peli.alustaLauta();
+        peli.arvoMiinatLaudalle();
+        peli.tulostaTilat();
+        peli.merkitseVierustat();
+        peli.tulostaTilat();
+//        Ruutu[][] lauta = peli.haePelilauta();
+//
+//        for (int y = 0; y < 5; y++) {
+//            System.out.println("");
+//            for (int x = 0; x < 5; x++) {
+//                System.out.print(peli.ruutu.heeTila(x, y));
+//            }
+//        }
     }
 }
