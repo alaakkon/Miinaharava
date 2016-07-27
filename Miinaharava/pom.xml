@@ -46,31 +46,6 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.8</version>
-                <configuration>
-                    <targetClasses>
-                        <param>
-                            runko.*
-                        </param>
-                    </targetClasses>
-                    <targetTests>
-                        <param>
-                            runko.*
-                        </param>
-                    </targetTests>
-                </configuration>
-                <!--
-               getTests>
-                        <param>Miinaharava.runkox.*</param>
-                    </targetTests>
-                </configuration> <configuration>
-                    <targetClasses>
-                        <param>Miinaharava.runko.*</param>
-                    </targetClasses>
-                    <targetTests>
-                        <param>Miinaharava.runko.*</param>
-                    </targetTests>
-                </configuration>
-                -->
             </plugin>
         </plugins>
     </build>

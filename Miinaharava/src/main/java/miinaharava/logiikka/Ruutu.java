@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package runko;
+package miinaharava.logiikka;
 
 /**
  *
@@ -16,19 +16,19 @@ public class Ruutu {
 
     public Ruutu(int y, int x) {
         this.status = false;
-        this.tila = -1;
+        this.tila = 0;
    
     }
 
-    public boolean haeStatus(int y, int x) {
+    public boolean haeStatus() {
         return status;
     }
 
-    public int haeTila(int y, int x) {
+    public int haeTila() {
         return tila;
     }
 
-    public void muutaTila(int y, int x, int muutos) {
+    public void muutaTila( int muutos) {
        this.tila = muutos;
 
     }

@@ -1,4 +1,6 @@
-package runko;
+package miinaharava.main;
+
+import miinaharava.logiikka.LaudanLuominen;
 
 public class Main {
 
@@ -8,6 +10,7 @@ public class Main {
         peli.alustaLauta();
         peli.arvoMiinatLaudalle();
         peli.tulostaTilat();
+        System.out.println("");
         peli.merkitseVierustat();
         peli.tulostaTilat();
 //        Ruutu[][] lauta = peli.haePelilauta();
