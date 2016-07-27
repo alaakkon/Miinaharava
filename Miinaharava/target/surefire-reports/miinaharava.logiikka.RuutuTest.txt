@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: miinaharava.logiikka.RuutuTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.05 sec
-=======
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.283 sec
->>>>>>> d06ae06c6a9918974451fb85a7a24351d8ca5a9c
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 sec

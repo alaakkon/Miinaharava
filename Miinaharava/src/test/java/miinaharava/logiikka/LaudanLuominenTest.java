@@ -54,6 +54,22 @@ public class LaudanLuominenTest {
     }
 
     @Test
+    public void arpookoOikeanMaaranMiinoja() {
+        int luku = 0;
+        int luku2= 13;
+        l.alustaLauta();
+        l.arvoMiinatLaudalle();
+        for (int i = 0; i < l.haePelilauta().length; i++) {
+            for (int j = 0; j < l.haePelilauta()[0].length; j++) {
+                if (l.haePelilauta()[i][j].haeTila() == 9) {
+                    luku++;
+                }
+            }
+            assertEquals(luku2,luku);
+        }
+    }
+
+    @Test
     public void alustaakoOikeinPelilaudan() {
         int luku = 0;
         l.alustaLauta();
