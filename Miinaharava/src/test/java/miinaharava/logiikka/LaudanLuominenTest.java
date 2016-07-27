@@ -23,15 +23,15 @@ public class LaudanLuominenTest {
     private LaudanLuominen l1;
     private LaudanLuominen l2;
     private LaudanLuominen l3;
-
-    private int[][] lauta;
-    private int[][] laut;
-    private int[][] lau;
+//
+//    private int[][] lauta;
+//    private int[][] laut;
+//    private int[][] lau;
     private int x;
     private int y;
 
     public LaudanLuominenTest() {
-        l = new LaudanLuominen(10,10);
+        l = new LaudanLuominen(10, 9);
         l1 = new LaudanLuominen(8, 8);
         l2 = new LaudanLuominen(1, 7);
         l3 = new LaudanLuominen(7, 1);
@@ -39,8 +39,33 @@ public class LaudanLuominenTest {
         this.x = 0;
     }
 
-//    @Test
-//    public void luokoOikeanKorkuisenPelilaudan() {
+    @Test
+    public void luokoOikeanKorkuisenPelilaudan() {
+
+        l.alustaLauta();
+        assertEquals(l.haePelilauta().length, 10);
+    }
+
+    @Test
+    public void luokoOikeanLevysenPelilaudan() {
+
+        l.alustaLauta();
+        assertEquals(l.haePelilauta()[0].length, 9);
+    }
+
+    @Test
+    public void alustaakoOikeinPelilaudan() {
+        int luku = 0;
+        l.alustaLauta();
+        for (int i = 0; i < l.haePelilauta().length; i++) {
+            for (int j = 0; j < l.haePelilauta()[0].length; j++) {
+                if (l.haePelilauta()[i][j].haeTila() == 0 && l.haePelilauta()[i][j].haeStatus() == false) {
+                    luku++;
+                }
+            }
+        }
+        assertEquals(luku, 90);
+    }
 //        int[][] la = new int[4][5];
 //        int korkeus = la.length;
 //        int leveys = la[1].length;

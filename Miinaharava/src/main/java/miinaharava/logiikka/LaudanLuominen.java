@@ -76,7 +76,7 @@ public class LaudanLuominen {
             luku = lista.get(i);
             rivi = luku / leveys;
             sarake = luku % leveys;
-            pelilauta[rivi][sarake].muutaTila( 9);
+            pelilauta[rivi][sarake].muutaTila(9);
         }
     }
 
@@ -113,7 +113,7 @@ public class LaudanLuominen {
                         for (int j = x_alku; j <= x_loppu; j++) {
                             if (pelilauta[i][j].haeTila() != 9) {
                                 int l = pelilauta[i][j].haeTila();
-                                pelilauta[i][j].muutaTila( l + 1);
+                                pelilauta[i][j].muutaTila(l + 1);
                             }
                         }
                     }
