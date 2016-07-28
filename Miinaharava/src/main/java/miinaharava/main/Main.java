@@ -1,6 +1,7 @@
 package miinaharava.main;
 
 import miinaharava.logiikka.LaudanLuominen;
+import miinaharava.logiikka.LaudanLuominen;
 
 public class Main {
 
@@ -8,11 +9,11 @@ public class Main {
 
         LaudanLuominen peli = new LaudanLuominen(5, 5);
         peli.alustaLauta();
-        peli.arvoMiinatLaudalle();
-        peli.tulostaTilat();
-        System.out.println("");
-        peli.merkitseVierustat();
-        peli.tulostaTilat();
+//        peli.arvoMiinatLaudalle();
+//        peli.tulostaTilat();
+//        System.out.println("");
+//        peli.merkitseVierustat();
+//        peli.tulostaTilat();
 //        Ruutu[][] lauta = peli.haePelilauta();
 //
 //        for (int y = 0; y < 5; y++) {
