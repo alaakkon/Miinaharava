@@ -11,8 +11,6 @@ package miinaharava.logiikka;
  */
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 import static oracle.jrockit.jfr.events.Bits.intValue;
 
 /**
@@ -23,39 +21,32 @@ public class LaudanLuominen {
 
     private int leveys;
     private int korkeus;
-    Ruutu ruutu;
     private Ruutu[][] pelilauta;
     private ArrayList<Integer> lista;
-    private int y;
-    private int x;
 
     public LaudanLuominen(int korkeus, int leveys) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.pelilauta = new Ruutu[korkeus][leveys];
         this.lista = new ArrayList<Integer>();
-        ruutu = new Ruutu(y, x);
     }
-
+    
     public Ruutu[][] haePelilauta() {
         return pelilauta;
-
     }
 
-    public Ruutu[][] luoLauta(int korkeus, int leveys) {
+    public void luoLauta(int korkeus, int leveys) {
         alustaLauta();
         arvoMiinatLaudalle();
-        merkitseVierustat();
-        return pelilauta;
+        merkitseVierustat();      
     }
 
-    public Ruutu[][] alustaLauta() {
+    public void alustaLauta() {
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
-                pelilauta[y][x] = new Ruutu(y, x);
+                pelilauta[y][x] = new Ruutu();
             }
         }
-        return pelilauta;
     }
 
     public void arvoMiinatLaudalle() {
@@ -69,8 +60,8 @@ public class LaudanLuominen {
         Collections.shuffle(lista);
         {
         }
-        double k = 0.15 * koko;
-        int miinoja = intValue(k);
+        
+        int miinoja = this.korkeus * this.leveys / 20;
 
         for (int i = 0; i < miinoja; i++) {
             luku = lista.get(i);
@@ -81,20 +72,24 @@ public class LaudanLuominen {
     }
 
     public void tulostaTilat() {
-        for (int y = 0; y < 5; y++) {
+        for (int y = 0; y < this.korkeus; y++) {
             System.out.println("");
-            for (int x = 0; x < 5; x++) {
+            for (int x = 0; x < this.leveys; x++) {
                 System.out.print(pelilauta[y][x].haeTila());
             }
         }
     }
 
     public void tulostaStatus() {
-        for (int y = 0; y < 5; y++) {
+        for (int y = 0; y < this.korkeus; y++) {
             System.out.println("");
-            for (int x = 0; x < 5; x++) {
+            for (int x = 0; x < this.leveys; x++) {
 
-                System.out.print(pelilauta[y][x].haeStatus());
+                if (pelilauta[y][x].onAuki() == true) {
+                    System.out.print(pelilauta[y][x].haeTila());
+                } else {
+                    System.out.print("X");
+                }
             }
         }
     }
@@ -104,36 +99,20 @@ public class LaudanLuominen {
         for (int a = 0; a < korkeus; a++) {
             for (int b = 0; b < leveys; b++) {
                 if (pelilauta[a][b].haeTila() == 9) {
-
-                    int x_alku = Math.max(b - 1, 0);
-                    int x_loppu = Math.min(b + 1, leveys - 1);
-                    int y_alku = Math.max(a - 1, 0);
-                    int y_loppu = Math.min(a + 1, korkeus - 1);
-
-                    for (int i = y_alku; i <= y_loppu; i++) {
-                        for (int j = x_alku; j <= x_loppu; j++) {
-                            if (pelilauta[i][j].haeTila() != 9) {
-                                int l = pelilauta[i][j].haeTila();
-                                pelilauta[i][j].muutaTila(l + 1);
-                            }
-                        }
-                    }
-
                     merkitse(a, b);
                 }
             }
-
         }
     }
 
     public void merkitse(int a, int b) {
-        int x_alku = Math.max(b - 1, 0);
-        int x_loppu = Math.min(b + 1, leveys - 1);
-        int y_alku = Math.max(a - 1, 0);
-        int y_loppu = Math.min(a + 1, korkeus - 1);
+        int xAlku = Math.max(b - 1, 0);
+        int xLoppu = Math.min(b + 1, leveys - 1);
+        int yAlku = Math.max(a - 1, 0);
+        int yLoppu = Math.min(a + 1, korkeus - 1);
 
-        for (int i = y_alku; i <= y_loppu; i++) {
-            for (int j = x_alku; j <= x_loppu; j++) {
+        for (int i = yAlku; i <= yLoppu; i++) {
+            for (int j = xAlku; j <= xLoppu; j++) {
                 if (pelilauta[i][j].haeTila() != 9) {
                     int l = pelilauta[i][j].haeTila();
                     pelilauta[i][j].muutaTila(l + 1);

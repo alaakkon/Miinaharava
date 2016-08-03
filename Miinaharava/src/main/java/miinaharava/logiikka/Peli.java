@@ -13,137 +13,80 @@ import miinaharava.logiikka.LaudanLuominen;
  */
 public class Peli {
 
-    public Peli() {
+    private LaudanLuominen lauta;
+    private Ruutu ruutu;
 
-//    private int[][] peli;
-//    private int[][] pelilauta;
-//    private int[][] tarkistus;
-//    LaudanLuominen l;
-//    int korkeus;
-//    int leveys;
-//
-//    public Peli(int korkeus, int leveys) {
-//        this.l = new LaudanLuominen(korkeus, leveys);
-//        this.peli = l.luoLauta();
-//        this.korkeus = korkeus;
-//        this.leveys = leveys;
-//        this.pelilauta = new int[korkeus][leveys];
-//        this.tarkistus = new int[korkeus][leveys];
-//        taytetaanLauta(pelilauta);
-//        taytetaanLauta(tarkistus);
-//    }
-//
-//    public int[][] taytetaanLauta(int[][] lauta) {
-//        for (int i = 0; i < korkeus; i++) {
-//            for (int j = 0; j < leveys; j++) {
-//                pelilauta[i][j] = 8;
-//            }
-//        }
-//        return pelilauta;
-//    }
-//
-//    public void pelaa(int y, int x) {
-//        tulosta();
-//        System.out.println("");
-//        boolean onko = onkoMiina(y, x);
-//        if (onko == false) {// tähän joku luuppi
-//            tyhjanVieressa(y, x);
-//        //    tyhjaKulma(y, x);
-//        } else {
-//            System.out.println("Hävisit!!!");
-//        }
-//        tulosta();
-//    }
-//
-//    public boolean onkoMiina(int y, int x) {
-//        if (peli[y][x] == 9) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-//
-//    public int[][] tyhjanVieressa(int y, int x) {
-//
-//        if (peli[y][x] == 0) {
-//            pelilauta[y][x] = 0;
-//
-//            for (int j = y + 1; j <= korkeus; j++) {//alas
-//                if (peli[j][x] == 0) {
-//                    pelilauta[j][x] = 0;
-//                } else {
-//                    break;
-//                }
-//            }
-//            for (int j = y - 1; j >= 0; j--) {//ylös
-//                if (peli[j][x] == 0) {
-//                    pelilauta[j][x] = 0;
-//                } else {
-//                    break;
-//                }
-//            }
-//            for (int j = x + 1; j <= leveys; j++) {//oikea
-//                if (peli[y][j] == 0) {
-//                    pelilauta[y][j] = 0;
-//                } else {
-//                    break;
-//                }
-//            }
-//            for (int j = x - 1; j >= 0; j--) {//vasen
-//                if (peli[y][j] == 0) {
-//                    pelilauta[y][j] = 0;
-//                } else {
-//                    break;
-//                }
-//            }
-//
-//        } else {
-//            pelilauta[y][x] = peli[y][x];
-//
-//        }
-//
-//        return pelilauta;
-//
-//    }
-//
-////    public int[][] tyhjaKulma(int y, int x) { //Nytm katkaisee suorituksen ,jos osuu oikeaan...luuppi?
-////        if (y < korkeus && x < leveys && peli[y + 1][x + 1] == 0) {//oikea alakulma
-////            pelilauta[y + 1][x + 1] = 0;
-////            tyhjanVieressa(y + 1, x + 1);
-////
-////        }
-////        if (y > 0 && x > 0 && peli[y - 1][x - 1] == 0) {// vasen yläkulma
-////            pelilauta[y - 1][x - 1] = 0;
-////            tyhjanVieressa(y - 1, x - 1);
-////
-////        }
-////        if (y > 0 && x < leveys && peli[y - 1][x + 1] == 0) {// oikea yläkulma
-////            pelilauta[y - 1][x + 1] = 0;
-////            tyhjanVieressa(y - 1, x + 1);
-////
-////        }
-////        if (y < korkeus && x > 0 && peli[y + 1][x - 1] == 0) {// vasen alakulma
-////            pelilauta[y + 1][x - 1] = 0;
-////            tyhjanVieressa(y + 1, x - 1);
-////
-////        }
-////        return pelilauta;
-////    }
-//
-//    public void tulosta() {
-//        for (int i = 0; i < korkeus; i++) {
-//            for (int j = 0; j < leveys; j++) {
-//                System.out.print(peli[i][j] + " ");
-//            }
-//            System.out.println("");
-//        }
-//        System.out.println();
-//        for (int k = 0; k < korkeus; k++) {
-//            for (int l = 0; l < leveys; l++) {
-//                System.out.print(pelilauta[k][l] + " ");
-//            }
-//            System.out.println();
-//        }
+    public Peli(int korkeus, int leveys) {
+        this.lauta = new LaudanLuominen(korkeus, leveys);
+        lauta.luoLauta(korkeus, leveys);
+
+    }
+
+    public boolean onMiina(int y, int x) {
+        if (lauta.haePelilauta()[y][x].haeTila() == 9) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void pelaa(int y, int x) {
+        if (onMiina(y, x)) {
+            System.out.println("Hävisit!!!");
+        } else if (lauta.haePelilauta()[y][x].haeTila() != 0) {
+            avaaNormaaliRuutu(y,x);
+        } else {
+            avaaNolla(y, x);
+        }
+        
+        
+    }
+
+    public void avaaNormaaliRuutu(int y, int x) {
+        lauta.haePelilauta()[y][x].muutaStatus(true);      
+    }
+    
+    public void avaaNolla(int y, int x) {
+        lauta.haePelilauta()[y][x].muutaStatus(true);
+        avaaKaikkiViereisetNollat(y, x);
+    }
+
+    public void avaaKaikkiViereisetNollat(int b, int a) {
+        int xAlku = annaSuurempiLuku(b - 1, 0);
+        int xLoppu = annaPienempiLuku(b + 1, lauta.haePelilauta().length - 1);
+        int yAlku = annaSuurempiLuku(a - 1, 0);
+        int yLoppu = annaPienempiLuku(a + 1, lauta.haePelilauta()[0].length - 1);
+        for (int i = yAlku; i <= yLoppu; i++) {
+            for (int j = xAlku; j <= xLoppu; j++) {
+                if (lauta.haePelilauta()[i][j].haeTila() == 0 && !lauta.haePelilauta()[i][j].onAuki()) {
+                  //  System.out.println( "(" + j + "," + i + ")");
+                    avaaNolla(i, j);
+                }
+            }
+        }
+        
+    }
+    
+    public int annaSuurempiLuku(int a, int b) {
+        if (a >= b) {
+            return a;
+        }
+        return b;
+    }
+
+    public int annaPienempiLuku(int a, int b) {
+       if (a <= b) {
+            return a;
+        }
+        return b; 
+    }
+    
+    public void tulostaStatus() {
+        lauta.tulostaTilat();
+    }
+
+    public void tulostaTilat() {
+        lauta.tulostaStatus();
     }
 
 }
