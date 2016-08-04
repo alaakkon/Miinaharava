@@ -1,6 +1,6 @@
 package miinaharava.main;
 
-import miinaharava.logiikka.LaudanLuominen;
+
 import miinaharava.logiikka.LaudanLuominen;
 
 public class Main {
@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         LaudanLuominen peli = new LaudanLuominen(5, 5);
-        peli.alustaLauta();
+ //       peli.alustaLauta();
 //        peli.arvoMiinatLaudalle();
 //        peli.tulostaTilat();
 //        System.out.println("");

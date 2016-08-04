@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="1" name="miinaharava.logiikka.LaudanLuominenTest" time="0.016" errors="0" skipped="0">
+<testsuite tests="4" failures="1" name="miinaharava.logiikka.LaudanLuominenTest" time="0.039" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -61,8 +61,8 @@
   </properties>
   <testcase classname="miinaharava.logiikka.LaudanLuominenTest" name="luokoOikeanKorkuisenPelilaudan" time="0"/>
   <testcase classname="miinaharava.logiikka.LaudanLuominenTest" name="luokoOikeanLevysenPelilaudan" time="0"/>
-  <testcase classname="miinaharava.logiikka.LaudanLuominenTest" name="arpookoOikeanMaaranMiinoja" time="0.014">
-    <failure message="expected:&lt;13&gt; but was:&lt;4&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;13&gt; but was:&lt;4&gt;
+  <testcase classname="miinaharava.logiikka.LaudanLuominenTest" name="arpookoOikeanMaaranMiinoja" time="0.015">
+    <failure message="expected:&lt;13&gt; but was:&lt;1&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;13&gt; but was:&lt;1&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
@@ -99,5 +99,5 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </failure>
   </testcase>
-  <testcase classname="miinaharava.logiikka.LaudanLuominenTest" name="alustaakoOikeinPelilaudan" time="0"/>
+  <testcase classname="miinaharava.logiikka.LaudanLuominenTest" name="alustaakoOikeinPelilaudan" time="0.009"/>
 </testsuite>
