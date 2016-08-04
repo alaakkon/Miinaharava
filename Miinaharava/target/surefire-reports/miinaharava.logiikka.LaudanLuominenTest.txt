@@ -1,14 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: miinaharava.logiikka.LaudanLuominenTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.04 sec <<< FAILURE!
 arpookoOikeanMaaranMiinoja(miinaharava.logiikka.LaudanLuominenTest)  Time elapsed: 0.015 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<13> but was:<1>
+=======
+Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec <<< FAILURE!
+arpookoOikeanMaaranMiinoja(miinaharava.logiikka.LaudanLuominenTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<13> but was:<4>
+>>>>>>> 443e5d9f94e5588d94c8a21ea0956eb6bc38fa22
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
 	at org.junit.Assert.assertEquals(Assert.java:631)
-	at miinaharava.logiikka.LaudanLuominenTest.arpookoOikeanMaaranMiinoja(LaudanLuominenTest.java:68)
+	at miinaharava.logiikka.LaudanLuominenTest.arpookoOikeanMaaranMiinoja(LaudanLuominenTest.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

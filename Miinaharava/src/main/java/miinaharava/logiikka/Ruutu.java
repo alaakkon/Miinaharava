@@ -11,25 +11,28 @@ package miinaharava.logiikka;
  */
 public class Ruutu {
 
-    private boolean status;
+    private boolean avoimuus;
     private int tila;
 
-    public Ruutu(int y, int x) {
-        this.status = false;
+    public Ruutu() {
+        this.avoimuus = false;
         this.tila = 0;
-   
+
     }
 
-    public boolean haeStatus() {
-        return status;
+    public boolean onAuki() {
+        return avoimuus;
     }
 
     public int haeTila() {
         return tila;
     }
 
-    public void muutaTila( int muutos) {
-       this.tila = muutos;
+    public void muutaTila(int muutos) {
+        this.tila = muutos;
+    }
 
+    public void muutaStatus(boolean muutos) {
+        this.avoimuus = muutos;
     }
 }

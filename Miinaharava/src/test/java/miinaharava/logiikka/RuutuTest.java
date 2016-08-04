@@ -22,7 +22,7 @@ public class RuutuTest {
     private Ruutu ruutu;
 
     public RuutuTest() {
-        this.ruutu = new Ruutu(5, 5);
+        this.ruutu = new Ruutu();
     }
 
     @Test
@@ -33,7 +33,7 @@ public class RuutuTest {
 
     @Test
     public void hakeekoStauksenOikein() {
-        assertFalse(ruutu.haeStatus());
+        assertFalse(ruutu.onAuki());
     }
 
     @Test
@@ -41,5 +41,10 @@ public class RuutuTest {
 
         ruutu.muutaTila(3);
         assertEquals(3, ruutu.haeTila());
+    }@Test
+    public void muuttaakoStatuksenOikein() {
+
+        ruutu.muutaStatus(true);
+        assertEquals(true,ruutu.onAuki());
     }
 }
