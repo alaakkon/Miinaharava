@@ -34,18 +34,17 @@ public class Peli {
         if (onMiina(y, x)) {
             System.out.println("Hävisit!!!");
         } else if (lauta.haePelilauta()[y][x].haeTila() != 0) {
-            avaaNormaaliRuutu(y,x);
+            avaaNormaaliRuutu(y, x);
         } else {
             avaaNolla(y, x);
         }
-        
-        
+
     }
 
     public void avaaNormaaliRuutu(int y, int x) {
-        lauta.haePelilauta()[y][x].muutaStatus(true);      
+        lauta.haePelilauta()[y][x].muutaStatus(true);
     }
-    
+
     public void avaaNolla(int y, int x) {
         lauta.haePelilauta()[y][x].muutaStatus(true);
         avaaKaikkiViereisetNollat(y, x);
@@ -59,14 +58,14 @@ public class Peli {
         for (int i = yAlku; i <= yLoppu; i++) {
             for (int j = xAlku; j <= xLoppu; j++) {
                 if (lauta.haePelilauta()[i][j].haeTila() == 0 && !lauta.haePelilauta()[i][j].onAuki()) {
-                  //  System.out.println( "(" + j + "," + i + ")");
+                    //  System.out.println( "(" + j + "," + i + ")");
                     avaaNolla(i, j);
                 }
             }
         }
-        
+
     }
-    
+
     public int annaSuurempiLuku(int a, int b) {
         if (a >= b) {
             return a;
@@ -75,12 +74,12 @@ public class Peli {
     }
 
     public int annaPienempiLuku(int a, int b) {
-       if (a <= b) {
+        if (a <= b) {
             return a;
         }
-        return b; 
+        return b;
     }
-    
+
     public void tulostaStatus() {
         lauta.tulostaTilat();
     }

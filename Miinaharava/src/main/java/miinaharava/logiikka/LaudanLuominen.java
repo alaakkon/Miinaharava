@@ -30,7 +30,7 @@ public class LaudanLuominen {
         this.pelilauta = new Ruutu[korkeus][leveys];
         this.lista = new ArrayList<Integer>();
     }
-    
+
     public Ruutu[][] haePelilauta() {
         return pelilauta;
     }
@@ -38,7 +38,7 @@ public class LaudanLuominen {
     public void luoLauta(int korkeus, int leveys) {
         alustaLauta();
         arvoMiinatLaudalle();
-        merkitseVierustat();      
+        merkitseVierustat();
     }
 
     public void alustaLauta() {
@@ -58,9 +58,6 @@ public class LaudanLuominen {
             lista.add(i);
         }
         Collections.shuffle(lista);
-        {
-        }
-        
         int miinoja = this.korkeus * this.leveys / 20;
 
         for (int i = 0; i < miinoja; i++) {
