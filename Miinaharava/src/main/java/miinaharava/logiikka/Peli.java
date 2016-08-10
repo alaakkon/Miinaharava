@@ -18,8 +18,10 @@ public class Peli {
 
     public Peli(int korkeus, int leveys) {
         this.lauta = new Lauta(korkeus, leveys);
-        lauta.alustaLauta(korkeus, leveys);
+        lauta.alustaLauta();
 
+    }public Lauta haeLauta(){
+        return lauta;
     }
 
     public boolean onMiina(int y, int x) {

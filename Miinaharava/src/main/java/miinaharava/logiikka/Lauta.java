@@ -35,22 +35,22 @@ public class Lauta {
         return pelilauta;
     }
 
-    public void alustaLauta(int korkeus, int leveys) {
+    public void alustaLauta() {
         luoRuudut();
         arvoMiinatLaudalle();
         merkitseVierustat();
     }
 
     public void luoRuudut() {
-        for (int y = 0; y < korkeus; y++) {
-            for (int x = 0; x < leveys; x++) {
+        for (int y = 0; y < pelilauta.length; y++) {
+            for (int x = 0; x < pelilauta[0].length; x++) {
                 pelilauta[y][x] = new Ruutu();
             }
         }
     }
 
     public void arvoMiinatLaudalle() {
-        int koko = leveys * korkeus;
+        int koko = pelilauta[0].length * pelilauta.length;
         int rivi = 0;
         int sarake = 0;
         int luku = 0;
@@ -58,29 +58,29 @@ public class Lauta {
             lista.add(i);
         }
         Collections.shuffle(lista);
-        int miinoja = this.korkeus * this.leveys / 20;
+        int miinoja = (pelilauta.length * pelilauta[0].length*15)/100 ;
 
         for (int i = 0; i < miinoja; i++) {
             luku = lista.get(i);
-            rivi = luku / leveys;
-            sarake = luku % leveys;
+            rivi = luku / pelilauta[0].length;
+            sarake = luku % pelilauta[0].length;
             pelilauta[rivi][sarake].muutaTila(9);
         }
     }
 
     public void tulostaTilat() {
-        for (int y = 0; y < this.korkeus; y++) {
+        for (int y = 0; y < pelilauta.length; y++) {
             System.out.println("");
-            for (int x = 0; x < this.leveys; x++) {
+            for (int x = 0; x < pelilauta[0].length; x++) {
                 System.out.print(pelilauta[y][x].haeTila());
             }
         }
     }
 
     public void tulostaStatus() {
-        for (int y = 0; y < this.korkeus; y++) {
+        for (int y = 0; y < pelilauta.length; y++) {
             System.out.println("");
-            for (int x = 0; x < this.leveys; x++) {
+            for (int x = 0; x < this.pelilauta[0].length; x++) {
 
                 if (pelilauta[y][x].onAuki() == true) {
                     System.out.print(pelilauta[y][x].haeTila());
@@ -93,8 +93,8 @@ public class Lauta {
 
     public void merkitseVierustat() {
 
-        for (int a = 0; a < korkeus; a++) {
-            for (int b = 0; b < leveys; b++) {
+        for (int a = 0; a < pelilauta.length; a++) {
+            for (int b = 0; b < pelilauta[0].length; b++) {
                 if (pelilauta[a][b].haeTila() == 9) {
                     merkitse(a, b);
                 }
@@ -104,9 +104,9 @@ public class Lauta {
 
     public void merkitse(int a, int b) {
         int xAlku = Math.max(b - 1, 0);
-        int xLoppu = Math.min(b + 1, leveys - 1);
+        int xLoppu = Math.min(b + 1, pelilauta[0].length - 1);
         int yAlku = Math.max(a - 1, 0);
-        int yLoppu = Math.min(a + 1, korkeus - 1);
+        int yLoppu = Math.min(a + 1, pelilauta.length - 1);
 
         for (int i = yAlku; i <= yLoppu; i++) {
             for (int j = xAlku; j <= xLoppu; j++) {

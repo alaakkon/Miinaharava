@@ -17,23 +17,23 @@ import static org.junit.Assert.*;
  *
  * @author anna
  */
-public class LaudanLuominenTest {
+public class LautaTest {
 
     private Lauta l;
     private Lauta l1;
     private Lauta l2;
     private Lauta l3;
 //
- //  private Ruutu[][] lauta;
+    //  private Ruutu[][] lauta;
 //    private int[][] laut;
 //    private int[][] lau;
     private int x;
     private int y;
 
-    public LaudanLuominenTest() {
+    public LautaTest() {
         l = new Lauta(10, 9);
         l1 = new Lauta(8, 8);
-        l2 = new Lauta(1, 7);
+        l2 = new Lauta(3, 3);
         l3 = new Lauta(7, 1);
         //lauta= new Ruutu[0][0];
         this.y = 0;
@@ -55,21 +55,48 @@ public class LaudanLuominenTest {
     }
 
     @Test
+    public void kutsuukoAlustaLaudanMetoditOikein() {
+        l2.alustaLauta();
+        int luku = 0;
+        int miina = 0;
+        for (int i = 0; i < l2.haePelilauta().length; i++) {
+            for (int j = 0; j < l2.haePelilauta()[0].length; j++) {
+                if (l2.haePelilauta()[i][j].haeTila() == 9) {
+                    luku++;
+                }else if(l2.haePelilauta()[i][j].haeTila() != 9&&l2.haePelilauta()[i][j].haeTila() != 0){
+                    miina++;
+                }
+            }
+        }
+        boolean onkoTotta=false;
+        if(miina!=0){
+            onkoTotta=true;
+        }
+        assertEquals(l2.haePelilauta().length, 3);
+        assertFalse(l2.haePelilauta()[0][0].onAuki());
+        assertEquals(luku,1);
+        assertTrue(onkoTotta);
+
+    }
+
+    @Test
     public void arpookoOikeanMaaranMiinoja() {
-//        int luku = 0;
-//        int luku2 = 13;
-//        l.alustaLauta();
-//        l.arvoMiinatLaudalle();
-//        for (int i = 0; i < l.haePelilauta().length; i++) {
-//            for (int j = 0; j < l.haePelilauta()[0].length; j++) {
-//                if (l.haePelilauta()[i][j].haeTila() == 9) {
-//                    luku++;
-//                }
-//            }
-//        }
-//        assertEquals(luku2, luku);
-    } @Test
-    public void alustaakoOikeinPelilaudan() {
+        int luku = 0;
+        int luku2 = 13;
+        l.luoRuudut();
+        l.arvoMiinatLaudalle();
+        for (int i = 0; i < l.haePelilauta().length; i++) {
+            for (int j = 0; j < l.haePelilauta()[0].length; j++) {
+                if (l.haePelilauta()[i][j].haeTila() == 9) {
+                    luku++;
+                }
+            }
+        }
+        assertEquals(luku, luku2);
+    }
+
+    @Test
+    public void alustaakoOikeinKokoisenPelilaudan() {
         int luku = 0;
         l.luoRuudut();
         for (int i = 0; i < l.haePelilauta().length; i++) {
@@ -82,73 +109,87 @@ public class LaudanLuominenTest {
         assertEquals(luku, 90);
 
     }
- @Test
+
+    @Test
     public void merkitseekoVierustanAlasOikein() {
-    
+
         l1.luoRuudut();
         l1.haePelilauta()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[2][1].haeTila(),1);
+        assertEquals(l1.haePelilauta()[2][1].haeTila(), 1);
 
     }
-     @Test
+
+    @Test
     public void merkitseekoVierustanOikealleOikein() {
-    
-        l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
-        l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[1][2].haeTila(),1);
 
-    } @Test
-    public void merkitseekoVierustanYlosOikein() {
-    
         l1.luoRuudut();
         l1.haePelilauta()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[0][1].haeTila(),1);
-
-    } @Test
-    public void merkitseekoVierustanVasemmalleOikein() {
-    
-        l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
-        l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[1][0].haeTila(),1);
-
-    } @Test
-    public void merkitseekoVierustanKoilliseenOikein() {
-    
-        l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
-        l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[0][2].haeTila(),1);
-
-    } @Test
-    public void merkitseekoVierustanKaakkoonOikein() {
-    
-        l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
-        l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[2][2].haeTila(),1);
-
-    } @Test
-    public void merkitseekoVierustanLounaaseenOikein() {
-    
-        l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
-        l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[2][0].haeTila(),1);
-
-    }@Test
-    public void merkitseekoVierustanLuoteeseenOikein() {
-    
-        l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
-        l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[0][0].haeTila(),1);
+        assertEquals(l1.haePelilauta()[1][2].haeTila(), 1);
 
     }
-   
+
+    @Test
+    public void merkitseekoVierustanYlosOikein() {
+
+        l1.luoRuudut();
+        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.merkitseVierustat();
+        assertEquals(l1.haePelilauta()[0][1].haeTila(), 1);
+
+    }
+
+    @Test
+    public void merkitseekoVierustanVasemmalleOikein() {
+
+        l1.luoRuudut();
+        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.merkitseVierustat();
+        assertEquals(l1.haePelilauta()[1][0].haeTila(), 1);
+
+    }
+
+    @Test
+    public void merkitseekoVierustanKoilliseenOikein() {
+
+        l1.luoRuudut();
+        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.merkitseVierustat();
+        assertEquals(l1.haePelilauta()[0][2].haeTila(), 1);
+
+    }
+
+    @Test
+    public void merkitseekoVierustanKaakkoonOikein() {
+
+        l1.luoRuudut();
+        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.merkitseVierustat();
+        assertEquals(l1.haePelilauta()[2][2].haeTila(), 1);
+
+    }
+
+    @Test
+    public void merkitseekoVierustanLounaaseenOikein() {
+
+        l1.luoRuudut();
+        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.merkitseVierustat();
+        assertEquals(l1.haePelilauta()[2][0].haeTila(), 1);
+
+    }
+
+    @Test
+    public void merkitseekoVierustanLuoteeseenOikein() {
+
+        l1.luoRuudut();
+        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.merkitseVierustat();
+        assertEquals(l1.haePelilauta()[0][0].haeTila(), 1);
+
+    }
+
 //        int[][] la = new int[4][5];
 //        int korkeus = la.length;
 //        int leveys = la[1].length;
