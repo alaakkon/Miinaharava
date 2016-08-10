@@ -44,7 +44,7 @@ public class RuutuTest {
     }@Test
     public void muuttaakoStatuksenOikein() {
 
-        ruutu.muutaStatus(true);
+        ruutu.muutaAvoimuus(true);
         assertEquals(true,ruutu.onAuki());
     }
 }

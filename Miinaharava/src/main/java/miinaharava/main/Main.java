@@ -1,15 +1,18 @@
 package miinaharava.main;
 
-import miinaharava.logiikka.LaudanLuominen;
+
+import miinaharava.logiikka.Lauta;
 import miinaharava.logiikka.Peli;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        Peli peli = new Peli(8, 8);
-        peli.pelaa(1, 1);
-        peli.tulostaStatus();
+        Lauta peli = new Lauta(5, 5);
+        Peli p= new Peli(8,8);
+        p.tulostaStatus();
         System.out.println("");
-        peli.tulostaTilat();
+        p.pelaa(1, 1);
+        p.tulostaTilat();
     }
 }

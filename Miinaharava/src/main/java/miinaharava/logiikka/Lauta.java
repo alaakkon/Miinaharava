@@ -17,31 +17,31 @@ import static oracle.jrockit.jfr.events.Bits.intValue;
  *
  * @author anna
  */
-public class LaudanLuominen {
+public class Lauta {
 
     private int leveys;
     private int korkeus;
     private Ruutu[][] pelilauta;
     private ArrayList<Integer> lista;
 
-    public LaudanLuominen(int korkeus, int leveys) {
+    public Lauta(int korkeus, int leveys) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.pelilauta = new Ruutu[korkeus][leveys];
         this.lista = new ArrayList<Integer>();
     }
-    
+
     public Ruutu[][] haePelilauta() {
         return pelilauta;
     }
 
-    public void luoLauta(int korkeus, int leveys) {
-        alustaLauta();
+    public void alustaLauta(int korkeus, int leveys) {
+        luoRuudut();
         arvoMiinatLaudalle();
-        merkitseVierustat();      
+        merkitseVierustat();
     }
 
-    public void alustaLauta() {
+    public void luoRuudut() {
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
                 pelilauta[y][x] = new Ruutu();
@@ -58,9 +58,6 @@ public class LaudanLuominen {
             lista.add(i);
         }
         Collections.shuffle(lista);
-        {
-        }
-        
         int miinoja = this.korkeus * this.leveys / 20;
 
         for (int i = 0; i < miinoja; i++) {

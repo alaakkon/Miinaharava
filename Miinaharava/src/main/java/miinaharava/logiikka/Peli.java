@@ -1,6 +1,6 @@
 package miinaharava.logiikka;
 
-import miinaharava.logiikka.LaudanLuominen;
+import miinaharava.logiikka.Lauta;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +13,12 @@ import miinaharava.logiikka.LaudanLuominen;
  */
 public class Peli {
 
-    private LaudanLuominen lauta;
+    private Lauta lauta;
     private Ruutu ruutu;
 
     public Peli(int korkeus, int leveys) {
-        this.lauta = new LaudanLuominen(korkeus, leveys);
-        lauta.luoLauta(korkeus, leveys);
+        this.lauta = new Lauta(korkeus, leveys);
+        lauta.alustaLauta(korkeus, leveys);
 
     }
 
@@ -34,39 +34,43 @@ public class Peli {
         if (onMiina(y, x)) {
             System.out.println("Hävisit!!!");
         } else if (lauta.haePelilauta()[y][x].haeTila() != 0) {
-            avaaNormaaliRuutu(y,x);
+            avaaNormaaliRuutu(y, x);
         } else {
             avaaNolla(y, x);
         }
-        
-        
+
     }
 
     public void avaaNormaaliRuutu(int y, int x) {
-        lauta.haePelilauta()[y][x].muutaStatus(true);      
+        lauta.haePelilauta()[y][x].muutaAvoimuus(true);
     }
-    
+
     public void avaaNolla(int y, int x) {
-        lauta.haePelilauta()[y][x].muutaStatus(true);
+        lauta.haePelilauta()[y][x].muutaAvoimuus(true);
         avaaKaikkiViereisetNollat(y, x);
     }
 
+    /**
+     * 
+     * @param b 
+     * @param a
+     */
     public void avaaKaikkiViereisetNollat(int b, int a) {
-        int xAlku = annaSuurempiLuku(b - 1, 0);
-        int xLoppu = annaPienempiLuku(b + 1, lauta.haePelilauta().length - 1);
-        int yAlku = annaSuurempiLuku(a - 1, 0);
-        int yLoppu = annaPienempiLuku(a + 1, lauta.haePelilauta()[0].length - 1);
+        int xAlku = Math.max(a - 1, 0);
+        int xLoppu = Math.min(a + 1, lauta.haePelilauta()[0].length - 1);
+        int yAlku = Math.max(b - 1, 0);
+        int yLoppu = Math.min(b + 1, lauta.haePelilauta().length  - 1);
         for (int i = yAlku; i <= yLoppu; i++) {
             for (int j = xAlku; j <= xLoppu; j++) {
                 if (lauta.haePelilauta()[i][j].haeTila() == 0 && !lauta.haePelilauta()[i][j].onAuki()) {
-                  //  System.out.println( "(" + j + "," + i + ")");
                     avaaNolla(i, j);
                 }
             }
         }
-        
+
     }
-    
+
+    //poistetaan myöhemmin
     public int annaSuurempiLuku(int a, int b) {
         if (a >= b) {
             return a;
@@ -75,12 +79,12 @@ public class Peli {
     }
 
     public int annaPienempiLuku(int a, int b) {
-       if (a <= b) {
+        if (a <= b) {
             return a;
         }
-        return b; 
+        return b;
     }
-    
+
     public void tulostaStatus() {
         lauta.tulostaTilat();
     }

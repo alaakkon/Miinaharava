@@ -32,7 +32,7 @@ public class Ruutu {
         this.tila = muutos;
     }
 
-    public void muutaStatus(boolean muutos) {
+    public void muutaAvoimuus(boolean muutos) {
         this.avoimuus = muutos;
     }
 }
