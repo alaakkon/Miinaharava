@@ -58,8 +58,7 @@ public class Lauta {
             lista.add(i);
         }
         Collections.shuffle(lista);
-        int miinoja = (pelilauta.length * pelilauta[0].length*15)/100 ;
-
+        int miinoja = (pelilauta.length * pelilauta[0].length * 15) / 100;
         for (int i = 0; i < miinoja; i++) {
             luku = lista.get(i);
             rivi = luku / pelilauta[0].length;
@@ -68,29 +67,28 @@ public class Lauta {
         }
     }
 
-    public void tulostaTilat() {
-        for (int y = 0; y < pelilauta.length; y++) {
-            System.out.println("");
-            for (int x = 0; x < pelilauta[0].length; x++) {
-                System.out.print(pelilauta[y][x].haeTila());
-            }
-        }
-    }
-
-    public void tulostaStatus() {
-        for (int y = 0; y < pelilauta.length; y++) {
-            System.out.println("");
-            for (int x = 0; x < this.pelilauta[0].length; x++) {
-
-                if (pelilauta[y][x].onAuki() == true) {
-                    System.out.print(pelilauta[y][x].haeTila());
-                } else {
-                    System.out.print("X");
-                }
-            }
-        }
-    }
-
+//    public void tulostaTilat() {
+//        for (int y = 0; y < pelilauta.length; y++) {
+//            System.out.println("");
+//            for (int x = 0; x < pelilauta[0].length; x++) {
+//                System.out.print(pelilauta[y][x].haeTila());
+//            }
+//        }
+//    }
+//
+//    public void tulostaAvoimuudet() {
+//        for (int y = 0; y < pelilauta.length; y++) {
+//            System.out.println("");
+//            for (int x = 0; x < this.pelilauta[0].length; x++) {
+//
+//                if (pelilauta[y][x].onAuki() == true) {
+//                    System.out.print(pelilauta[y][x].haeTila());
+//                } else {
+//                    System.out.print("X");
+//                }
+//            }
+//        }
+//    }
     public void merkitseVierustat() {
 
         for (int a = 0; a < pelilauta.length; a++) {

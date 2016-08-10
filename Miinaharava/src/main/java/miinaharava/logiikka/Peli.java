@@ -19,8 +19,9 @@ public class Peli {
     public Peli(int korkeus, int leveys) {
         this.lauta = new Lauta(korkeus, leveys);
         lauta.alustaLauta();
+    }
 
-    }public Lauta haeLauta(){
+    public Lauta haeLauta() {
         return lauta;
     }
 
@@ -53,15 +54,17 @@ public class Peli {
     }
 
     /**
-     * 
-     * @param b 
-     * @param a
+     * Avataan kaikki ruudut, jotka ovat tyhjiä ja kosketuksissa arvattuun,
+     * tyhjään ruutuun.
+     *
+     * @param b ruudukon y- koordinaatti
+     * @param a ruudukon x-koordinaatti
      */
     public void avaaKaikkiViereisetNollat(int b, int a) {
         int xAlku = Math.max(a - 1, 0);
         int xLoppu = Math.min(a + 1, lauta.haePelilauta()[0].length - 1);
         int yAlku = Math.max(b - 1, 0);
-        int yLoppu = Math.min(b + 1, lauta.haePelilauta().length  - 1);
+        int yLoppu = Math.min(b + 1, lauta.haePelilauta().length - 1);
         for (int i = yAlku; i <= yLoppu; i++) {
             for (int j = xAlku; j <= xLoppu; j++) {
                 if (lauta.haePelilauta()[i][j].haeTila() == 0 && !lauta.haePelilauta()[i][j].onAuki()) {
@@ -73,26 +76,24 @@ public class Peli {
     }
 
     //poistetaan myöhemmin
-    public int annaSuurempiLuku(int a, int b) {
-        if (a >= b) {
-            return a;
-        }
-        return b;
-    }
-
-    public int annaPienempiLuku(int a, int b) {
-        if (a <= b) {
-            return a;
-        }
-        return b;
-    }
-
-    public void tulostaStatus() {
-        lauta.tulostaTilat();
-    }
-
-    public void tulostaTilat() {
-        lauta.tulostaStatus();
-    }
-
+//    public int annaSuurempiLuku(int a, int b) {
+//        if (a >= b) {
+//            return a;
+//        }
+//        return b;
+//    }
+//
+//    public int annaPienempiLuku(int a, int b) {
+//        if (a <= b) {
+//            return a;
+//        }
+//        return b;
+//    }
+//    public void tulostaStatus() {
+//        lauta.tulostaTilat();
+//    }
+//
+//    public void tulostaTilat() {
+//        lauta.tulostaStatus();
+//    }
 }
