@@ -11,4 +11,6 @@ Päivä | Tunnit | Kuvaus
 27.7.2016|4h| Koodausta, pom toimii, mutta on edelleen ihan tyhäm.
 3.8.2016|5h| Koodausta, pom ei tosiaan toimi ja on edelleen ihan tyhäm.
 4.8.2016|4h| Pom on pimpelipom ja edelleen ihan tyhäm.
+10.8.2016|4h| Pom on pimpelipom ja edelleen ihan tyhäm, mutta koodi alkaa toimia.
+
 
