@@ -38,6 +38,9 @@ public class PeliTest {
                 }
             }
         }
+    }@Test
+    public void pelaakoOikein(){
+        apumetodi(9);
     }
 
     @Test
@@ -45,6 +48,9 @@ public class PeliTest {
 
         apumetodi(9);
         assertTrue(peli.onMiina(this.y, this.x));
+        peli.haeLauta().haePelilauta()[0][0].muutaTila(0);
+        assertFalse(peli.onMiina(0, 0));
+
     }
 
     @Test
@@ -68,6 +74,7 @@ public class PeliTest {
         assertEquals(peli.haeLauta().haePelilauta()[1][3].haeTila(), 0);
         assertEquals(peli.haeLauta().haePelilauta()[2][3].haeTila(), 0);
     }
+
     @Test
     public void avaakoNollat() {
         for (int i = 0; i < 3; i++) {
@@ -78,11 +85,9 @@ public class PeliTest {
         }
         peli.haeLauta().haePelilauta()[1][1].muutaTila(9);
         peli.avaaKaikkiViereisetNollat(0, 3);
- 
 
         assertTrue(peli.haeLauta().haePelilauta()[0][3].onAuki());
         assertTrue(peli.haeLauta().haePelilauta()[1][3].onAuki());
         assertTrue(peli.haeLauta().haePelilauta()[2][3].onAuki());
     }
 }
-
