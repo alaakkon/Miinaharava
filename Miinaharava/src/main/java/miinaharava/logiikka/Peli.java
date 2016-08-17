@@ -14,7 +14,7 @@ import miinaharava.logiikka.Lauta;
 public class Peli {
 
     private Lauta lauta;
-    private Ruutu ruutu;
+   
 
     public Peli(int korkeus, int leveys) {
         this.lauta = new Lauta(korkeus, leveys);

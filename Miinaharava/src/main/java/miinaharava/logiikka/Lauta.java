@@ -22,13 +22,13 @@ public class Lauta {
     private int leveys;
     private int korkeus;
     private Ruutu[][] pelilauta;
-    private ArrayList<Integer> lista;
+    private ArrayList<Integer> arvontaLista;
 
     public Lauta(int korkeus, int leveys) {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.pelilauta = new Ruutu[korkeus][leveys];
-        this.lista = new ArrayList<Integer>();
+        this.arvontaLista = new ArrayList<Integer>();
     }
 
     public Ruutu[][] haePelilauta() {
@@ -55,12 +55,12 @@ public class Lauta {
         int sarake = 0;
         int luku = 0;
         for (int i = 0; i < koko; i++) {
-            lista.add(i);
+            arvontaLista.add(i);
         }
-        Collections.shuffle(lista);
+        Collections.shuffle(arvontaLista);
         int miinoja = (pelilauta.length * pelilauta[0].length * 15) / 100;
         for (int i = 0; i < miinoja; i++) {
-            luku = lista.get(i);
+            luku = arvontaLista.get(i);
             rivi = luku / pelilauta[0].length;
             sarake = luku % pelilauta[0].length;
             pelilauta[rivi][sarake].muutaTila(9);
