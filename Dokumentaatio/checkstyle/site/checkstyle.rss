@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 4,
+      <title>File: 6,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#miinaharava.logiikka.Peli.java">miinaharava/logiikka/Peli.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#miinaharava.logiikka.Lauta.java">miinaharava/logiikka/Lauta.java</a>
                 </td>
                 <td>
@@ -74,7 +60,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#miinaharava.logiikka.PelinKulku.java">miinaharava/logiikka/PelinKulku.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#miinaharava.logiikka.Ruutu.java">miinaharava/logiikka/Ruutu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#miinaharava.kayttoliittyma.Piirtoalusta.java">miinaharava/kayttoliittyma/Piirtoalusta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#miinaharava.kayttoliittyma.PeliPaneeli.java">miinaharava/kayttoliittyma/PeliPaneeli.java</a>
                 </td>
                 <td>
                   0

@@ -44,14 +44,14 @@ public class LautaTest {
     public void luokoOikeanKorkuisenPelilaudan() {
 
         l.luoRuudut();
-        assertEquals(l.haePelilauta().length, 10);
+        assertEquals(l.haeRuutuTaulukko().length, 10);
     }
 
     @Test
     public void luokoOikeanLevysenPelilaudan() {
 
         l.luoRuudut();
-        assertEquals(l.haePelilauta()[0].length, 9);
+        assertEquals(l.haeRuutuTaulukko()[0].length, 9);
     }
 
     @Test
@@ -59,11 +59,11 @@ public class LautaTest {
         l2.alustaLauta();
         int luku = 0;
         int miina = 0;
-        for (int i = 0; i < l2.haePelilauta().length; i++) {
-            for (int j = 0; j < l2.haePelilauta()[0].length; j++) {
-                if (l2.haePelilauta()[i][j].haeTila() == 9) {
+        for (int i = 0; i < l2.haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < l2.haeRuutuTaulukko()[0].length; j++) {
+                if (l2.haeRuutuTaulukko()[i][j].haeTila() == 9) {
                     luku++;
-                }else if(l2.haePelilauta()[i][j].haeTila() != 9&&l2.haePelilauta()[i][j].haeTila() != 0){
+                }else if(l2.haeRuutuTaulukko()[i][j].haeTila() != 9&&l2.haeRuutuTaulukko()[i][j].haeTila() != 0){
                     miina++;
                 }
             }
@@ -72,8 +72,8 @@ public class LautaTest {
         if(miina!=0){
             onkoTotta=true;
         }
-        assertEquals(l2.haePelilauta().length, 3);
-        assertFalse(l2.haePelilauta()[0][0].onAuki());
+        assertEquals(l2.haeRuutuTaulukko().length, 3);
+        assertFalse(l2.haeRuutuTaulukko()[0][0].onAuki());
         assertEquals(luku,1);
         assertTrue(onkoTotta);
 
@@ -85,9 +85,9 @@ public class LautaTest {
         int luku2 = 13;
         l.luoRuudut();
         l.arvoMiinatLaudalle();
-        for (int i = 0; i < l.haePelilauta().length; i++) {
-            for (int j = 0; j < l.haePelilauta()[0].length; j++) {
-                if (l.haePelilauta()[i][j].haeTila() == 9) {
+        for (int i = 0; i < l.haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < l.haeRuutuTaulukko()[0].length; j++) {
+                if (l.haeRuutuTaulukko()[i][j].haeTila() == 9) {
                     luku++;
                 }
             }
@@ -99,9 +99,9 @@ public class LautaTest {
     public void alustaakoOikeinKokoisenPelilaudan() {
         int luku = 0;
         l.luoRuudut();
-        for (int i = 0; i < l.haePelilauta().length; i++) {
-            for (int j = 0; j < l.haePelilauta()[0].length; j++) {
-                if (l.haePelilauta()[i][j].haeTila() == 0 && l.haePelilauta()[i][j].onAuki() == false) {
+        for (int i = 0; i < l.haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < l.haeRuutuTaulukko()[0].length; j++) {
+                if (l.haeRuutuTaulukko()[i][j].haeTila() == 0 && l.haeRuutuTaulukko()[i][j].onAuki() == false) {
                     luku++;
                 }
             }
@@ -114,9 +114,9 @@ public class LautaTest {
     public void merkitseekoVierustanAlasOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[2][1].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[2][1].haeTila(), 1);
 
     }
 
@@ -124,9 +124,9 @@ public class LautaTest {
     public void merkitseekoVierustanOikealleOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[1][2].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[1][2].haeTila(), 1);
 
     }
 
@@ -134,9 +134,9 @@ public class LautaTest {
     public void merkitseekoVierustanYlosOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[0][1].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[0][1].haeTila(), 1);
 
     }
 
@@ -144,9 +144,9 @@ public class LautaTest {
     public void merkitseekoVierustanVasemmalleOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[1][0].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[1][0].haeTila(), 1);
 
     }
 
@@ -154,9 +154,9 @@ public class LautaTest {
     public void merkitseekoVierustanKoilliseenOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[0][2].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[0][2].haeTila(), 1);
 
     }
 
@@ -164,9 +164,9 @@ public class LautaTest {
     public void merkitseekoVierustanKaakkoonOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[2][2].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[2][2].haeTila(), 1);
 
     }
 
@@ -174,9 +174,9 @@ public class LautaTest {
     public void merkitseekoVierustanLounaaseenOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[2][0].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[2][0].haeTila(), 1);
 
     }
 
@@ -184,9 +184,9 @@ public class LautaTest {
     public void merkitseekoVierustanLuoteeseenOikein() {
 
         l1.luoRuudut();
-        l1.haePelilauta()[1][1].muutaTila(9);
+        l1.haeRuutuTaulukko()[1][1].muutaTila(9);
         l1.merkitseVierustat();
-        assertEquals(l1.haePelilauta()[0][0].haeTila(), 1);
+        assertEquals(l1.haeRuutuTaulukko()[0][0].haeTila(), 1);
 
     }
 

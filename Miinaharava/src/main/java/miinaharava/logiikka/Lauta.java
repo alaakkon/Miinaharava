@@ -1,21 +1,11 @@
 package miinaharava.logiikka;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author alaakkon
- */
 import java.util.ArrayList;
 import java.util.Collections;
 import static oracle.jrockit.jfr.events.Bits.intValue;
 
 /**
- *
- * @author anna
+ * Luokassa luodaan pelilauta käyttäjän määräämän koon mukaisesti pelia varten.
  */
 public class Lauta {
 
@@ -28,19 +18,29 @@ public class Lauta {
         this.korkeus = korkeus;
         this.leveys = leveys;
         this.pelilauta = new Ruutu[korkeus][leveys];
-        this.arvontaLista = new ArrayList<Integer>();
+
     }
 
-    public Ruutu[][] haePelilauta() {
+    /**
+     * Metodi hakee kaksiuloitteisen taulukon, pelilaudan.
+     */
+    public Ruutu[][] haeRuutuTaulukko() {
         return pelilauta;
     }
 
+    /**
+     * Metodi Muodostaa pelilaudan peliä varten.
+     */
     public void alustaLauta() {
         luoRuudut();
         arvoMiinatLaudalle();
         merkitseVierustat();
     }
 
+    /**
+     * Metodi alustaa pelilaudan luomalla kaksiuloiteeseen taulukkon jokaiseen
+     * muuttujaan Ruutu-olion.
+     */
     public void luoRuudut() {
         for (int y = 0; y < pelilauta.length; y++) {
             for (int x = 0; x < pelilauta[0].length; x++) {
@@ -49,7 +49,11 @@ public class Lauta {
         }
     }
 
+    /**
+     * Metodi luo pelilaudalle miinat.
+     */
     public void arvoMiinatLaudalle() {
+        this.arvontaLista = new ArrayList<Integer>();
         int koko = pelilauta[0].length * pelilauta.length;
         int rivi = 0;
         int sarake = 0;
@@ -66,7 +70,7 @@ public class Lauta {
             pelilauta[rivi][sarake].muutaTila(9);
         }
     }
-
+// Nämä pois, apuna koodaukselle
 //    public void tulostaTilat() {
 //        for (int y = 0; y < pelilauta.length; y++) {
 //            System.out.println("");
@@ -89,6 +93,11 @@ public class Lauta {
 //            }
 //        }
 //    }
+
+    /**
+     * Metodi merkitsee miinoja sisältävien ruutuihin kyseisen ruutuun
+     * kosketuksissa olevien miinojen lukumäärän.
+     */
     public void merkitseVierustat() {
 
         for (int a = 0; a < pelilauta.length; a++) {
