@@ -12,5 +12,6 @@ Päivä | Tunnit | Kuvaus
 3.8.2016|5h| Koodausta, pom ei tosiaan toimi ja on edelleen ihan tyhäm.
 4.8.2016|4h| Pom on pimpelipom ja edelleen ihan tyhäm.
 10.8.2016|4h| Pom on pimpelipom ja edelleen ihan tyhäm, mutta koodi alkaa toimia.
+17.8.2016|5h|Graafinen käyttis aloitettu. Ilmari tarjosi elämän tähtihetken,
 
 

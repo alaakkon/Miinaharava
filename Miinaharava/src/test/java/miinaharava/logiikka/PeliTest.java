@@ -38,9 +38,19 @@ public class PeliTest {
                 }
             }
         }
-    }@Test
-    public void pelaakoOikein(){
+    }
+
+    @Test
+    public void pelaakoOikein() {
         apumetodi(9);
+        peli.pelaa(this.y, this.x);
+        assertTrue(peli.onMiina(this.y, this.x));
+        apumetodi(0);
+        peli.pelaa(this.y, this.x);
+        assertTrue(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].onAuki());
+        apumetodi(1);
+        peli.pelaa(this.y, this.x);
+        assertTrue(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].onAuki());
     }
 
     @Test
