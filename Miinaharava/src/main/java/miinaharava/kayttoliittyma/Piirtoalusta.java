@@ -1,6 +1,11 @@
 package miinaharava.kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import miinaharava.logiikka.PelinKulku;
 import miinaharava.logiikka.Ruutu;
@@ -65,8 +70,15 @@ public class Piirtoalusta extends JPanel {
      * @param x leveyden koordinaatti
      */
     private void piirraMiina(Graphics g, int y, int x) {
-        g.drawString("M", 20 * x, 20 * y);
-
+   String nimi="miina";
+        try {
+            Image kuva=KuvanLataaminen.haeKuva(nimi);
+            g.drawImage(kuva, x, y, null);
+        } catch (IOException ex) {
+            g.setColor(Color.red);
+            g.drawRect(x*20, y*20, 20,20);
+        }
+   
     }
 
     /**
@@ -79,8 +91,31 @@ public class Piirtoalusta extends JPanel {
      * @param tila
      */
     private void piirraTila(Graphics g, int y, int x, int tila) {
-        String luku = "" + tila;
-        g.drawString(luku, 20 * x, 20 * y);
+        String nimi;
+        if (tila == 1) {
+            nimi = "yksi";
+        } else if (tila == 2) {
+            nimi = "kaksi";
+        } else if (tila == 3) {
+            nimi = "kolme";
+        } else if (tila == 4) {
+            nimi = "nelja";
+        } else if (tila == 5) {
+            nimi = "viisi";
+        } else if (tila == 6) {
+            nimi = "kuusi";
+        } else if (tila == 7) {
+            nimi = "seiska";
+        } else {
+            nimi = "kasi";
+        }
+        try {
+            Image kuva=KuvanLataaminen.haeKuva(nimi);
+            g.drawImage(kuva, x*20, y*20, null);
+        } catch (IOException ex) {
+            g.setColor(Color.yellow);
+            g.drawRect(x*20, y*20, 20,20);
+        }
     }
 
     /**
@@ -91,7 +126,17 @@ public class Piirtoalusta extends JPanel {
      * @param x
      */
     private void piirraAvaamaton(Graphics g, int y, int x) {
-        g.drawRect(x * 20, 20 * y, 20, 20);
+        try {
+            String avaamaton = "avaamaton";
+            Image kuva = KuvanLataaminen.haeKuva(avaamaton);
+            g.drawImage(kuva, x * 20, y * 20, null);
+        } catch (Exception e) {
+            g.setColor(Color.red);
+            g.drawRect(x * 20, 20 * y, 20, 20);
+        }
+
+        //g.fillRect(x * 20, 20 * y, 20, 20);
+        // g.drawRect(x * 20, 20 * y, 20, 20);
     }
 
 }
