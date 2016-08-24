@@ -1,7 +1,12 @@
 package miinaharava.kayttoliittyma;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 import miinaharava.logiikka.PelinKulku;
 import miinaharava.logiikka.Ruutu;
 
@@ -12,14 +17,19 @@ import miinaharava.logiikka.Ruutu;
 public class Piirtoalusta extends JPanel {
 
     private PelinKulku peli;
+    private int kerroin;
+    private int kerroin2;
 
     public Piirtoalusta(PelinKulku peli) {
         this.peli = peli;
+        this.kerroin = 40;
+        this.kerroin2 = 54;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         piirraLauta(g);
     }
 
@@ -46,6 +56,7 @@ public class Piirtoalusta extends JPanel {
      * @param x leveyden koordinaatti
      */
     private void piirraRuutu(Graphics g, int y, int x) {
+        super.setBackground(Color.white);
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki()) {
             if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
                 piirraMiina(g, y, x);
@@ -65,7 +76,9 @@ public class Piirtoalusta extends JPanel {
      * @param x leveyden koordinaatti
      */
     private void piirraMiina(Graphics g, int y, int x) {
-        g.drawString("M", 20 * x, 20 * y);
+
+        g.fillOval(kerroin2 * x, kerroin2 * y, kerroin2, kerroin2);
+        g.drawString("M", kerroin2 * x, kerroin2 * y);
 
     }
 
@@ -80,7 +93,9 @@ public class Piirtoalusta extends JPanel {
      */
     private void piirraTila(Graphics g, int y, int x, int tila) {
         String luku = "" + tila;
-        g.drawString(luku, 20 * x, 20 * y);
+        g.setColor(Color.red);
+        g.drawString(luku, kerroin * x, kerroin * y);
+      g.setClip (x * kerroin, kerroin * y, kerroin, kerroin);
     }
 
     /**
@@ -91,7 +106,7 @@ public class Piirtoalusta extends JPanel {
      * @param x
      */
     private void piirraAvaamaton(Graphics g, int y, int x) {
-        g.drawRect(x * 20, 20 * y, 20, 20);
+        g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
     }
 
 }
