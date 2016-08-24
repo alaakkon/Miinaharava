@@ -46,7 +46,7 @@ public class PelinKulku {
      */
     public void pelaa(int y, int x) {
         if (onMiina(y, x)) {
-            System.out.println("Hävisit!!!");
+            avaaRuutu(y, x);
         } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
             avaaRuutu(y, x);
         } else {

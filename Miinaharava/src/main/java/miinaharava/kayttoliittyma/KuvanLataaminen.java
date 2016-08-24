@@ -9,22 +9,34 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-
 
 /**
  *
- * @author alaakkon
+ * Luokka lataa kuvan tiedostosta pelin käyttöön.
  */
 public class KuvanLataaminen {
 
     public KuvanLataaminen() {
     }
 
-    public static Image haeKuva(String kuvanNimi) throws IOException  {
+    /**
+     * Lataa käyttäjän haluaman kuvan tiedostosta
+     *
+     * @param kuvanNimi
+     * @return
+     */
+    public static Image haeKuva(String kuvanNimi) {
         URL url = KuvanLataaminen.class.getClassLoader().getResource(kuvanNimi + ".png");
-        BufferedImage kuva=ImageIO.read(url);
+        BufferedImage kuva = null;
+        try {
+            kuva = ImageIO.read(url);
+            return kuva;
+        } catch (IOException ex) {
+
+        }
         return kuva;
     }
 }
-
