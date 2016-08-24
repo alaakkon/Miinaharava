@@ -16,13 +16,13 @@ import static org.junit.Assert.*;
  *
  * @author alaakkon
  */
-public class PeliTest {
+public class PelinKulkuTest {
 
     PelinKulku peli;
     private int y;
     private int x;
 
-    public PeliTest() {
+    public PelinKulkuTest() {
         peli = new PelinKulku(3, 4);
         this.y = 0;
         this.x = 0;
@@ -45,9 +45,11 @@ public class PeliTest {
         apumetodi(9);
         peli.pelaa(this.y, this.x);
         assertTrue(peli.onMiina(this.y, this.x));
+        assertTrue(peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki());
         apumetodi(0);
         peli.pelaa(this.y, this.x);
         assertTrue(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].onAuki());
+        assertEquals(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].haeTila(), 0);
         apumetodi(1);
         peli.pelaa(this.y, this.x);
         assertTrue(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].onAuki());

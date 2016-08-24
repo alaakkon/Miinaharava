@@ -70,7 +70,7 @@ public class Lauta {
             pelilauta[rivi][sarake].muutaTila(9);
         }
     }
-// Nämä pois, apuna koodaukselle
+// Nämä lähtevät pois...
 //    public void tulostaTilat() {
 //        for (int y = 0; y < pelilauta.length; y++) {
 //            System.out.println("");

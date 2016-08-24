@@ -1,6 +1,7 @@
 miinaharava/logiikka/Ruutu.class
 miinaharava/kayttoliittyma/PeliPaneeli.class
 miinaharava/logiikka/Lauta.class
+miinaharava/logiikka/PelinKulku.class
 miinaharava/main/Main.class
 miinaharava/kayttoliittyma/Piirtoalusta.class
-miinaharava/logiikka/PelinKulku.class
+miinaharava/kayttoliittyma/KuvanLataaminen.class
