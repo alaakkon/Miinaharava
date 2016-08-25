@@ -14,5 +14,8 @@ Päivä | Tunnit | Kuvaus
 10.8.2016|4h| Pom on pimpelipom ja edelleen ihan tyhäm, mutta koodi alkaa toimia.
 17.8.2016|5h|Graafinen käyttis aloitettu. Ilmari tarjosi elämän tähtihetken.
 18.8.2016|1h| Testiä ja pommia.
+24.8.2016|5h| Grafiikkaa.
+18.8.2016|3h| Sekvenssikaavioita ja Deadline4.
+
 
 

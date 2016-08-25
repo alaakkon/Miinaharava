@@ -1,18 +1,16 @@
 package miinaharava.kayttoliittyma;
 
 import java.awt.Color;
-<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.BorderFactory;
-=======
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
->>>>>>> ae739d7cc8a81acefd3854ac379ba375e4cafff7
+
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import miinaharava.logiikka.PelinKulku;
@@ -84,12 +82,8 @@ public class Piirtoalusta extends JPanel {
      * @param x leveyden koordinaatti
      */
     private void piirraMiina(Graphics g, int y, int x) {
-<<<<<<< HEAD
 
-        g.fillOval(kerroin2 * x, kerroin2 * y, kerroin2, kerroin2);
-        g.drawString("M", kerroin2 * x, kerroin2 * y);
 
-=======
         try {
             String nimi = "miina";
             Image kuva = KuvanLataaminen.haeKuva(nimi);
@@ -98,7 +92,7 @@ public class Piirtoalusta extends JPanel {
             g.setColor(Color.red);
             g.drawRect(x * 20, 20 * y, 20, 20);
         }
->>>>>>> ae739d7cc8a81acefd3854ac379ba375e4cafff7
+
     }
 
     /**
@@ -111,12 +105,7 @@ public class Piirtoalusta extends JPanel {
      * @param tila
      */
     private void piirraTila(Graphics g, int y, int x, int tila) {
-<<<<<<< HEAD
-        String luku = "" + tila;
-        g.setColor(Color.red);
-        g.drawString(luku, kerroin * x, kerroin * y);
-      g.setClip (x * kerroin, kerroin * y, kerroin, kerroin);
-=======
+
         if (tila == 0) {
             g.setColor(Color.GRAY);
             g.drawRect(x * 20, y * 20, 20, 20);
@@ -125,7 +114,7 @@ public class Piirtoalusta extends JPanel {
             Image kuva = KuvanLataaminen.haeKuva(nimi);
             g.drawImage(kuva, x * 20, y * 20, null);
         }
->>>>>>> ae739d7cc8a81acefd3854ac379ba375e4cafff7
+
     }
 
     /**
@@ -136,9 +125,7 @@ public class Piirtoalusta extends JPanel {
      * @param x
      */
     private void piirraAvaamaton(Graphics g, int y, int x) {
-<<<<<<< HEAD
-        g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
-=======
+
         try {
             String avaamaton = "avaamaton";
             Image kuva = KuvanLataaminen.haeKuva(avaamaton);
@@ -147,7 +134,7 @@ public class Piirtoalusta extends JPanel {
             g.setColor(Color.red);
             g.drawRect(x * 20, 20 * y, 20, 20);
         }
->>>>>>> ae739d7cc8a81acefd3854ac379ba375e4cafff7
+
     }
 
 }
