@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -18,6 +19,7 @@ import javax.swing.WindowConstants;
 public class PeliPaneeli implements Runnable {
 
     JFrame kehys;
+    JFrame alku;
     Piirtoalusta piirtoalusta;
 
     public PeliPaneeli(Piirtoalusta piirtoalusta) {
@@ -30,10 +32,16 @@ public class PeliPaneeli implements Runnable {
      */
     @Override
     public void run() {
-        kehys = new JFrame("Otsikko");
-        kehys.setPreferredSize(new Dimension(1200, 1000));
-        kehys.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        luoKomponentit();
+        JPanel pan =luoValikko();
+        alku=new JFrame();
+        alku.add(pan);
+        alku.pack();
+        alku.setVisible(true);
+        
+//        kehys = new JFrame("Miinaharava");
+//        kehys.setPreferredSize(new Dimension(1200, 1000));
+//        kehys.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        luoKomponentit();
 
     }
 
@@ -51,9 +59,11 @@ public class PeliPaneeli implements Runnable {
     }
 
     private JPanel luoValikko() {
-         JPanel paneeli = new JPanel(new GridLayout(1, 3));
+         JPanel paneeli = new JPanel(new GridLayout(3, 3));
         paneeli.add(new JLabel("Ruudukon korkeus: ( min 1) "));
+        paneeli.add(new JTextField());
         paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
+        paneeli.add(new JTextField());
         paneeli.add(new JButton("Aloita peli"));
         
         // tapahtumankuuntelija

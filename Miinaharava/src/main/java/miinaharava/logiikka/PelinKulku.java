@@ -23,10 +23,12 @@ public class PelinKulku {
     public Lauta haeLauta() {
         return lauta;
     }
-/**
- * Metodilla voidaan tarkistaa onko peli käynnissä vai loppunut.
- * @return boolean peliKaynnissa
- */
+
+    /**
+     * Metodilla voidaan tarkistaa onko peli käynnissä vai loppunut.
+     *
+     * @return boolean peliKaynnissa
+     */
     public boolean onkoPeliKaynnissa() {
         return peliKaynnissa;
     }
@@ -54,14 +56,20 @@ public class PelinKulku {
      * @param y korkeuden koordinaatti
      * @param x leveyden koordinaatti
      */
-    public void pelaa(int y, int x) {
-        if (onMiina(y, x)) {
-            avaaRuutu(y, x);
-        } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
-            avaaRuutu(y, x);
-        } else {
-            avaaNolla(y, x);
+    public void pelaa(int y, int x, int komento) {
+        if (komento == 1) {
+            if (onMiina(y, x)) {
+                avaaRuutu(y, x);
+            } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
+                avaaRuutu(y, x);
+            } else {
+                avaaNolla(y, x);
+            }
+        } else if (komento == 3) {
+            lauta.haeRuutuTaulukko()[y][x].muutaLiputus();
+            
         }
+
     }
 
     /**

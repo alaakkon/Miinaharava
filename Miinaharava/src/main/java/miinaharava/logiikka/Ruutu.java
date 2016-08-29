@@ -7,11 +7,13 @@ package miinaharava.logiikka;
 public class Ruutu {
 
     private boolean avoimuus;
+    private boolean onkoLiputettu;
     private int tila;
 
     public Ruutu() {
         this.avoimuus = false;
         this.tila = 0;
+        this.onkoLiputettu = false;
     }
 
     /**
@@ -28,6 +30,20 @@ public class Ruutu {
      */
     public int haeTila() {
         return tila;
+    }
+
+    public boolean haeLiputusTila() {
+        return onkoLiputettu;
+    }
+
+    public void muutaLiputus() {
+       
+        if (onkoLiputettu) {
+            onkoLiputettu = false;
+        } else {
+            onkoLiputettu = true;
+        }
+         System.out.println(onkoLiputettu);
     }
 
     /**

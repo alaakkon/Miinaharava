@@ -30,9 +30,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private int x;
     private int y;
     private boolean onkoLippu;
-  //  private Graphics g;
-    
- 
+    //  private Graphics g;
 
     /**
      *
@@ -42,16 +40,15 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         this.peli = peli;
         this.kerroin = 20;
         this.kerroin2 = 54;
-        this.onkoLippu=false;
-     
+        this.onkoLippu = false;
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-       piirraLauta(g);
+        piirraLauta(g);
     }
-
 
     /**
      * Metodi piirtää pelilaudan jokaisen ruudun pelitilanteen mukaisessa
@@ -78,13 +75,11 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      */
     private void piirraRuutu(Graphics g, int y, int x) {
         super.setBackground(Color.white);
+
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki()) {
             if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
                 piirraMiina(g, y, x);
-            } else if(onkoLippu=true){
-                piirraLippu(g,y,x);
-            }
-                else {
+            } else {
                 piirraTila(g, y, x, peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila());
             }
         } else {
@@ -142,20 +137,25 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param x
      */
     private void piirraAvaamaton(Graphics g, int y, int x) {
-
-        try {
-            String avaamaton = "avaamaton";
-            Image kuva = KuvanLataaminen.haeKuva(avaamaton);
-            g.drawImage(kuva, x * kerroin, y * kerroin, null);
-        } catch (Exception e) {
-            g.setColor(Color.red);
-            g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
+        if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeLiputusTila() == true) {
+            piirraLippu(g, y, x);
+        } else {
+            try {
+                String avaamaton = "avaamaton";
+                Image kuva = KuvanLataaminen.haeKuva(avaamaton);
+                g.drawImage(kuva, x * kerroin, y * kerroin, null);
+            } catch (Exception e) {
+                g.setColor(Color.red);
+                g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
+            }
         }
 
     }
-      private void piirraLippu(Graphics g, int y, int x) {
-          try {
+
+    private void piirraLippu(Graphics g, int y, int x) {
+        try {
             String lippu = "lippu";
+            System.out.println("lippu");
             Image kuva = KuvanLataaminen.haeKuva(lippu);
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
         } catch (Exception e) {
@@ -171,14 +171,14 @@ public class Piirtoalusta extends JPanel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        this.x = e.getX()/kerroin;
-        this.y = e.getY()/kerroin;
-        peli.pelaa(y, x);
+        this.x = e.getX() / kerroin;
+        this.y = e.getY() / kerroin;
+        peli.pelaa(y, x, e.getButton());
         repaint();
-        
-      // piirraLauta(g);
+
+        // piirraLauta(g);
         //  paintComponent(g);
-        System.out.println("x="+x+",y="+y);
+        System.out.println("x=" + x + ",y=" + y);
     }
 
     @Override
@@ -195,7 +195,5 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
         System.out.println("");
     }
-
-  
 
 }
