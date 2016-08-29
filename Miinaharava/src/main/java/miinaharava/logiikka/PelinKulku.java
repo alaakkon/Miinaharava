@@ -9,10 +9,12 @@ import miinaharava.logiikka.Lauta;
 public class PelinKulku {
 
     private Lauta lauta;
+    boolean peliKaynnissa;
 
     public PelinKulku(int korkeus, int leveys) {
         this.lauta = new Lauta(korkeus, leveys);
         lauta.alustaLauta();
+        this.peliKaynnissa = true;
     }
 
     /**
@@ -20,6 +22,13 @@ public class PelinKulku {
      */
     public Lauta haeLauta() {
         return lauta;
+    }
+/**
+ * Metodilla voidaan tarkistaa onko peli käynnissä vai loppunut.
+ * @return boolean peliKaynnissa
+ */
+    public boolean onkoPeliKaynnissa() {
+        return peliKaynnissa;
     }
 
     /**
@@ -32,6 +41,7 @@ public class PelinKulku {
      */
     public boolean onMiina(int y, int x) {
         if (lauta.haeRuutuTaulukko()[y][x].haeTila() == 9) {
+            peliKaynnissa = false;
             return true;
         } else {
             return false;

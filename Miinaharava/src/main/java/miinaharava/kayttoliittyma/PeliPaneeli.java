@@ -2,7 +2,14 @@ package miinaharava.kayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
+import java.awt.event.MouseListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /**
@@ -15,6 +22,7 @@ public class PeliPaneeli implements Runnable {
 
     public PeliPaneeli(Piirtoalusta piirtoalusta) {
         this.piirtoalusta = piirtoalusta;
+
     }
 
     /**
@@ -23,7 +31,7 @@ public class PeliPaneeli implements Runnable {
     @Override
     public void run() {
         kehys = new JFrame("Otsikko");
-        kehys.setPreferredSize(new Dimension(500, 500));
+        kehys.setPreferredSize(new Dimension(1200, 1000));
         kehys.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit();
 
@@ -34,8 +42,30 @@ public class PeliPaneeli implements Runnable {
      */
     private void luoKomponentit() {
         kehys.getContentPane().add(piirtoalusta);
+        kehys.addMouseListener(piirtoalusta);
+
+      //  kehys.add(luoValikko(), BorderLayout.SOUTH);
         kehys.pack();
         kehys.setVisible(true);
 
+    }
+
+    private JPanel luoValikko() {
+         JPanel paneeli = new JPanel(new GridLayout(1, 3));
+        paneeli.add(new JLabel("Ruudukon korkeus: ( min 1) "));
+        paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
+        paneeli.add(new JButton("Aloita peli"));
+        
+        // tapahtumankuuntelija
+   
+        return paneeli;
+
+//
+//    container.add(nimiTeksti);
+//    container.add(nimiKentta);
+//    container.add(hetuTeksti);
+//    container.add(hetuKentta);
+//    container.add(new JLabel(""));
+//    container.add(lisaaNappi);
     }
 }

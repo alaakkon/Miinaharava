@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: miinaharava.logiikka.PeliTest
--------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec
-=======
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.05 sec
->>>>>>> ae739d7cc8a81acefd3854ac379ba375e4cafff7
