@@ -33,6 +33,10 @@ public class PelinKulku {
         return peliKaynnissa;
     }
 
+    public void lopetaPeli() {
+        peliKaynnissa = false;
+    }
+
     /**
      * Metodi tarkistaa sisältääkö annettujen parametrien sisältämä ruutu
      * miinan.
@@ -67,7 +71,7 @@ public class PelinKulku {
             }
         } else if (komento == 3) {
             lauta.haeRuutuTaulukko()[y][x].muutaLiputus();
-            
+
         }
 
     }

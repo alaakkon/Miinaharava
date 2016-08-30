@@ -30,8 +30,9 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private int x;
     private int y;
     private boolean onkoLippu;
-    //  private Graphics g;
+    private Ruutu[][] ruudut;
 
+    //  private Graphics g;
     /**
      *
      * @param peli
@@ -41,6 +42,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         this.kerroin = 20;
         this.kerroin2 = 54;
         this.onkoLippu = false;
+        this.ruudut = peli.haeLauta().haeRuutuTaulukko();
 
     }
 
@@ -58,7 +60,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      */
     private void piirraLauta(Graphics g) {
 
-        Ruutu[][] ruudut = peli.haeLauta().haeRuutuTaulukko();
         for (int i = 0; i < ruudut.length; i++) {
             for (int j = 0; j < ruudut[0].length; j++) {
                 piirraRuutu(g, i, j);
@@ -78,14 +79,16 @@ public class Piirtoalusta extends JPanel implements MouseListener {
 
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki()) {
             if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
-                // piirraLoppu(g);
                 piirraMiina(g, y, x);
+                peli.lopetaPeli();
+                //  piirraLoppu(g, y, x);
             } else {
                 piirraTila(g, y, x, peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila());
             }
         } else {
             piirraAvaamaton(g, y, x);
         }
+
     }
 
     /**
@@ -95,14 +98,16 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param y korkeuden koordinaatti
      * @param x leveyden koordinaatti
      */
-    private void piirraLoppu(Graphics g) {
-        Ruutu[][] ruudut = peli.haeLauta().haeRuutuTaulukko();
+    private void piirraLoppu(Graphics g, int y, int x) {
+        this.y = 0;
+        this.x = 0;
+
         for (int i = 0; i < ruudut.length; i++) {
             for (int j = 0; j < ruudut[0].length; j++) {
                 ruudut[i][j].muutaAvoimuus(true);
-                piirraRuutu(g, i, j);
+
             }
-        }
+        }repaint();
 
     }
 
@@ -110,11 +115,9 @@ public class Piirtoalusta extends JPanel implements MouseListener {
 
         try {
             String nimi = "miina";
-            //  String nimi="mii";
             Image kuva = KuvanLataaminen.haeKuva(nimi);
-
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
-           
+            piirraLoppu(g, x, y);
         } catch (Exception e) {
             g.setColor(Color.red);
             g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
@@ -193,9 +196,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         peli.pelaa(y, x, e.getButton());
         repaint();
 
-        // piirraLauta(g);
-        //  paintComponent(g);
-        System.out.println("x=" + x + ",y=" + y);
     }
 
     @Override
