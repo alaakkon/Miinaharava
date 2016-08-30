@@ -27,13 +27,13 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        peli = new PelinKulku(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
+        this.peli = new PelinKulku(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
 
         System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
 
     public PelinKulku haePeli() {
-        return peli;
+        return this.peli;
     }
 
 }

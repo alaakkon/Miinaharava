@@ -31,6 +31,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private int y;
     private boolean onkoLippu;
     private Ruutu[][] ruudut;
+    private int laskuri;
 
     //  private Graphics g;
     /**
@@ -43,7 +44,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         this.kerroin2 = 54;
         this.onkoLippu = false;
         this.ruudut = peli.haeLauta().haeRuutuTaulukko();
-
+        this.laskuri = 0;
     }
 
     @Override
@@ -75,18 +76,22 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param x leveyden koordinaatti
      */
     private void piirraRuutu(Graphics g, int y, int x) {
+
         super.setBackground(Color.LIGHT_GRAY);
 
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki()) {
             if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
                 piirraMiina(g, y, x);
                 peli.lopetaPeli();
-                //  piirraLoppu(g, y, x);
             } else {
                 piirraTila(g, y, x, peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila());
             }
         } else {
             piirraAvaamaton(g, y, x);
+        }
+        if (laskeAvaamattomat() == peli.haeLauta().montakoMiinaa()) {
+            peli.lopetaPeli();
+            piirraLoppu(g, y, x);
         }
 
     }
@@ -107,7 +112,8 @@ public class Piirtoalusta extends JPanel implements MouseListener {
                 ruudut[i][j].muutaAvoimuus(true);
 
             }
-        }repaint();
+        }
+        repaint();
 
     }
 
@@ -178,6 +184,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
             System.out.println("lippu");
             Image kuva = KuvanLataaminen.haeKuva(lippu);
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
+
         } catch (Exception e) {
             g.setColor(Color.cyan);
             g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
@@ -211,6 +218,19 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         System.out.println("");
+    }
+
+    private int laskeAvaamattomat() {
+        int montakoAuki = 0;
+        for (int i = 0; i < peli.haeLauta().haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < peli.haeLauta().haeRuutuTaulukko()[0].length; j++) {
+                if (peli.haeLauta().haeRuutuTaulukko()[j][i].onAuki()) {
+                    montakoAuki++;
+                }
+                laskuri++;
+            }
+        }
+        return laskuri - montakoAuki;
     }
 
 }
