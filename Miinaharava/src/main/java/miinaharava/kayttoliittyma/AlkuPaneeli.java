@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import miinaharava.logiikka.PelinKulku;
 
 /**
  *
@@ -21,6 +22,8 @@ public class AlkuPaneeli implements Runnable {
     JFrame alku;
     private int luku;
     private int leveys;
+    private PelinKulku pelinKulku;
+    private AlkuPaneelinKuuntelija alkuPaneelinKuuntelija;
 
     public AlkuPaneeli() {
         this.luku = luku;
@@ -41,17 +44,19 @@ public class AlkuPaneeli implements Runnable {
         JPanel paneeli = new JPanel(new GridLayout(3, 3));
         JTextField korkeus = new JTextField();
         JTextField leveys = new JTextField();
+        JButton nappi = new JButton("Aloita peli");
         paneeli.add(new JLabel("Ruudukon korkeus: ( min 1) "));
         paneeli.add(korkeus);
         paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
         paneeli.add(leveys);
-        paneeli.add(new JButton("Aloita peli"));
-
-        // tapahtumankuuntelija
+        paneeli.add(nappi);
+        alkuPaneelinKuuntelija = new AlkuPaneelinKuuntelija(korkeus, leveys);
+        nappi.addActionListener(alkuPaneelinKuuntelija);
         return paneeli;
     }
 
-    void talleta() {
-        this.luku = luku;
+    public PelinKulku haePeli() {
+        return alkuPaneelinKuuntelija.haePeli();
     }
+
 }

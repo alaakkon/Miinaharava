@@ -7,6 +7,8 @@ package miinaharava.kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JTextField;
+import miinaharava.logiikka.PelinKulku;
 
 /**
  *
@@ -14,10 +16,24 @@ import java.awt.event.ActionListener;
  */
 public class AlkuPaneelinKuuntelija implements ActionListener {
 
+    private JTextField korkeus;
+    private JTextField leveys;
+    private PelinKulku peli;
+
+    public AlkuPaneelinKuuntelija(JTextField korkeus, JTextField leveys) {
+        this.korkeus = korkeus;
+        this.leveys = leveys;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-    AlkuPaneeli a=new AlkuPaneeli();
-    a.talleta();
+        peli = new PelinKulku(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
+
+        System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
-    
+
+    public PelinKulku haePeli() {
+        return peli;
+    }
+
 }

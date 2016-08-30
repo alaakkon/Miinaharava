@@ -1,8 +1,10 @@
-miinaharava/kayttoliittyma/HiirenKlikkaus.class
 miinaharava/logiikka/Ruutu.class
 miinaharava/kayttoliittyma/PeliPaneeli.class
 miinaharava/logiikka/Lauta.class
 miinaharava/logiikka/PelinKulku.class
 miinaharava/main/Main.class
+miinaharava/kayttoliittyma/AlkuPaneeli.class
+miinaharava/kayttoliittyma/KayttoLiittyma.class
+miinaharava/kayttoliittyma/AlkuPaneelinKuuntelija.class
 miinaharava/kayttoliittyma/Piirtoalusta.class
 miinaharava/kayttoliittyma/KuvanLataaminen.class

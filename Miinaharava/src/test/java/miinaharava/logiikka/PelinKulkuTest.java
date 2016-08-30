@@ -43,15 +43,15 @@ public class PelinKulkuTest {
     @Test
     public void pelaakoOikein() {
         apumetodi(9);
-        peli.pelaa(this.y, this.x);
+        peli.pelaa(this.y, this.x,1);
         assertTrue(peli.onMiina(this.y, this.x));
         assertTrue(peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki());
         apumetodi(0);
-        peli.pelaa(this.y, this.x);
+        peli.pelaa(this.y, this.x,1);
         assertTrue(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].onAuki());
         assertEquals(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].haeTila(), 0);
         apumetodi(1);
-        peli.pelaa(this.y, this.x);
+        peli.pelaa(this.y, this.x,1);
         assertTrue(peli.haeLauta().haeRuutuTaulukko()[this.y][this.x].onAuki());
     }
 

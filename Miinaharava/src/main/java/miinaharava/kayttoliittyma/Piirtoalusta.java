@@ -74,10 +74,11 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param x leveyden koordinaatti
      */
     private void piirraRuutu(Graphics g, int y, int x) {
-        super.setBackground(Color.white);
+        super.setBackground(Color.LIGHT_GRAY);
 
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki()) {
             if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
+                // piirraLoppu(g);
                 piirraMiina(g, y, x);
             } else {
                 piirraTila(g, y, x, peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila());
@@ -94,12 +95,26 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param y korkeuden koordinaatti
      * @param x leveyden koordinaatti
      */
+    private void piirraLoppu(Graphics g) {
+        Ruutu[][] ruudut = peli.haeLauta().haeRuutuTaulukko();
+        for (int i = 0; i < ruudut.length; i++) {
+            for (int j = 0; j < ruudut[0].length; j++) {
+                ruudut[i][j].muutaAvoimuus(true);
+                piirraRuutu(g, i, j);
+            }
+        }
+
+    }
+
     private void piirraMiina(Graphics g, int y, int x) {
 
         try {
             String nimi = "miina";
+            //  String nimi="mii";
             Image kuva = KuvanLataaminen.haeKuva(nimi);
+
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
+           
         } catch (Exception e) {
             g.setColor(Color.red);
             g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
@@ -124,6 +139,8 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         } else {
             String nimi = "" + tila;
             Image kuva = KuvanLataaminen.haeKuva(nimi);
+            g.setColor(Color.gray);
+            g.drawRect(x * kerroin, y * kerroin, kerroin, kerroin);
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
         }
 
