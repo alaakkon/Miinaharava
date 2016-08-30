@@ -1,6 +1,6 @@
 Aihemäärittely:    
 #Miinaharava    
-Yksinpeli, jossa pelilaudalle sijoitetaan piiloon miinoja, joiden paikat pelaajan on tarkoitus päätellä. Peli päättyy, kun pelaaja on antanut miinojen oikeat koordinaatit. Mikäli pelaaja antaa sisällöksi tyhjän ruutuun, jonka sisältönä onkin miina, peli päättyy. Väärästä miinan arvelusta ei tapahdu mitään.
+Yksinpeli, jossa pelilaudalle sijoitetaan piiloon miinoja, joiden paikat pelaajan on tarkoitus päätellä. Peli päättyy onnistuneesti, kun pelaaja on antanut miinojen oikeat koordinaatit. Mikäli pelaaja arvaa ruudun sisällön miinattomaksi ja erehtyy arvelussaan, peli päättyy. 
 - [Aiheen kuvaus](Dokumentaatio/AiheenKuvausJaMääritelmä.md)
 - [Tuntikirjanpito](Dokumentaatio/Tuntikirjanpito.md)
 - [Luokkakaavio](Dokumentaatio/Luokkakaavio4.png "Luokkakaavio")
