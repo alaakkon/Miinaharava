@@ -64,6 +64,7 @@ public class PelinKulku {
         if (komento == 1) {
             if (onMiina(y, x)) {
                 avaaRuutu(y, x);
+                peliKaynnissa = false;
             } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
                 avaaRuutu(y, x);
             } else {

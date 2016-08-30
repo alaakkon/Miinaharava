@@ -1,20 +1,13 @@
 package miinaharava.kayttoliittyma;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.BorderFactory;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
+import javax.swing.JTextField;
 import miinaharava.logiikka.PelinKulku;
 import miinaharava.logiikka.Ruutu;
 
@@ -26,14 +19,10 @@ public class Piirtoalusta extends JPanel implements MouseListener {
 
     private PelinKulku peli;
     private int kerroin;
-    private int kerroin2;
     private int x;
     private int y;
-    private boolean onkoLippu;
     private Ruutu[][] ruudut;
-    private int laskuri;
 
-    //  private Graphics g;
     /**
      *
      * @param peli
@@ -41,10 +30,8 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     public Piirtoalusta(PelinKulku peli) {
         this.peli = peli;
         this.kerroin = 20;
-        this.kerroin2 = 54;
-        this.onkoLippu = false;
         this.ruudut = peli.haeLauta().haeRuutuTaulukko();
-        this.laskuri = 0;
+
     }
 
     @Override
@@ -88,10 +75,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
             }
         } else {
             piirraAvaamaton(g, y, x);
-        }
-        if (laskeAvaamattomat() == peli.haeLauta().montakoMiinaa()) {
-            peli.lopetaPeli();
-            piirraLoppu(g, y, x);
         }
 
     }
@@ -151,6 +134,9 @@ public class Piirtoalusta extends JPanel implements MouseListener {
             g.setColor(Color.gray);
             g.drawRect(x * kerroin, y * kerroin, kerroin, kerroin);
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
+        }
+        if (vielaArvattavia() < 1) {
+            piirraLoppu(g, y, x);
         }
 
     }
@@ -220,17 +206,20 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         System.out.println("");
     }
 
-    private int laskeAvaamattomat() {
+    private int vielaArvattavia() {
         int montakoAuki = 0;
+        int laskuri = 0;
         for (int i = 0; i < peli.haeLauta().haeRuutuTaulukko().length; i++) {
             for (int j = 0; j < peli.haeLauta().haeRuutuTaulukko()[0].length; j++) {
-                if (peli.haeLauta().haeRuutuTaulukko()[j][i].onAuki()) {
+                if (peli.haeLauta().haeRuutuTaulukko()[i][j].onAuki()) {
                     montakoAuki++;
+                } else {
+
                 }
                 laskuri++;
             }
         }
-        return laskuri - montakoAuki;
+        System.out.println((laskuri - montakoAuki) - peli.haeLauta().montakoMiinaa());
+        return (laskuri - montakoAuki) - peli.haeLauta().montakoMiinaa();
     }
-
 }

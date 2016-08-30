@@ -20,30 +20,29 @@ public class KayttoLiittyma {
 
     public KayttoLiittyma() {
         alkuPaneeli = new AlkuPaneeli();
-        
         luoAlkupaneeli();
-         kaynnistaPeli();
+
     }
 
     private void luoAlkupaneeli() {
         alkuPaneeli.run();
-      //  kaynnistaPeli();
+     //   luoPelipaneeli();
     }
 
-    private void kaynnistaPeli() {
-        luoPelipaneeli();
-
-    }
+//    private void kaynnistaPeli() {
+//        luoPelipaneeli();
+//
+//    }
 
     private void lopetaPeli() {
 
     }
 
-    private void luoPelipaneeli() {
-        peli = alkuPaneeli.haePeli();
-       // peli = new PelinKulku(peli.haeLauta().haeRuutuTaulukko().length, peli.haeLauta().haeRuutuTaulukko()[0].length);
-        Piirtoalusta p = new Piirtoalusta(peli);
-        peliPaneeli = new PeliPaneeli(p);
-        peliPaneeli.run();
-    }
+//    private void luoPelipaneeli() {
+//        peli = apk.haePeli();
+//        // peli = new PelinKulku(peli.haeLauta().haeRuutuTaulukko().length, peli.haeLauta().haeRuutuTaulukko()[0].length);
+//        Piirtoalusta p = new Piirtoalusta(peli);
+//        peliPaneeli = new PeliPaneeli(p);
+//        peliPaneeli.run();
+//    }
 }

@@ -20,10 +20,12 @@ import miinaharava.logiikka.PelinKulku;
 public class AlkuPaneeli implements Runnable {
 
     JFrame alku;
+    JButton nappi;
     private int luku;
     private int leveys;
     private PelinKulku pelinKulku;
     private AlkuPaneelinKuuntelija alkuPaneelinKuuntelija;
+   
 
     public AlkuPaneeli() {
         this.luku = luku;
@@ -37,6 +39,8 @@ public class AlkuPaneeli implements Runnable {
         alku.add(pan);
         alku.pack();
         alku.setVisible(true);
+       
+        
 
     }
 
@@ -44,7 +48,7 @@ public class AlkuPaneeli implements Runnable {
         JPanel paneeli = new JPanel(new GridLayout(3, 3));
         JTextField korkeus = new JTextField();
         JTextField leveys = new JTextField();
-        JButton nappi = new JButton("Aloita peli");
+      nappi = new JButton("Aloita peli");
         paneeli.add(new JLabel("Ruudukon korkeus: ( min 1) "));
         paneeli.add(korkeus);
         paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
@@ -55,8 +59,8 @@ public class AlkuPaneeli implements Runnable {
         return paneeli;
     }
 
-    public PelinKulku haePeli() {
-        return alkuPaneelinKuuntelija.haePeli();
-    }
+//    public PelinKulku haePeli() {
+//        return alkuPaneelinKuuntelija.haePeli();
+//    }
 
 }

@@ -19,6 +19,7 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
     private JTextField korkeus;
     private JTextField leveys;
     private PelinKulku peli;
+    private PeliPaneeli pp;
 
     public AlkuPaneelinKuuntelija(JTextField korkeus, JTextField leveys) {
         this.korkeus = korkeus;
@@ -27,8 +28,10 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+   
         this.peli = new PelinKulku(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
-
+        pp = new PeliPaneeli(new Piirtoalusta(peli));
+        pp.run();
         System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
 

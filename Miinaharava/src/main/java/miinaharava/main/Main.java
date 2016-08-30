@@ -14,7 +14,7 @@ import miinaharava.logiikka.PelinKulku;
 public class Main {
 
     public static void main(String[] args) {
-       KayttoLiittyma k= new KayttoLiittyma();
+     KayttoLiittyma k= new KayttoLiittyma();
     
 
 //        PelinKulku peli = new PelinKulku(3,3);
@@ -23,6 +23,8 @@ public class Main {
 //        Piirtoalusta pa = new Piirtoalusta(peli);
 //
 //        PeliPaneeli p = new PeliPaneeli(pa);
+//        System.out.println(peli.haeLauta().montakoMiinaa());
+//        
 //        peli.haeLauta().tulostaTilat();
 //        p.run();
         
