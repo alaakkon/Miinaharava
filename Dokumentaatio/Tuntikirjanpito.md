@@ -16,6 +16,11 @@ Päivä | Tunnit | Kuvaus
 18.8.2016|1h| Testiä ja pommia.
 24.8.2016|5h| Grafiikkaa.
 18.8.2016|3h| Sekvenssikaavioita ja Deadline4.
+22.8.2016|3h| Grafiikkaa
+23.8.2016|5h| Grafiikkaa ja muutoksia
+29.8.2016|5h| Grafiikkaa, etenkin yhteensopivuuksia
+30.8.2016|5h| Grafiikkaa, etenkin yhteensopivuuksia, esitys
+31.8.2016|13h|Yhteensopivuuksia, sekvenssikaaviota, aika ja tiedostot. Mä en pääse ikinä kotiin!
 
 
 
