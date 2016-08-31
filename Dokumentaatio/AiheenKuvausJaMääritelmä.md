@@ -8,6 +8,6 @@ Pelaaja antaa syötteenä pelilaudan koordinaatit ja ruudun arvellun sisällön.
 ###Sekvenssikaaviot
 - [PelinKulku_p=new_PelinKulku(3,3)](PelinKulku_p=new_PelinKulku(2)(1).png)
 - [p.pelaa()](p.pelaa.png)
-- [arvoMiinatLaudalle()](arvoMiinatLaudalle.png)
+- [arvoMiinatLaudalle()](arvoMiinatLaudalle().png)
 - [merkitseVierustat()](merkitseVierustat.png)
 - [avaaNolla()](avaaNolla.png)
