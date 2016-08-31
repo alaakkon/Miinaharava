@@ -32,18 +32,24 @@ public class Ruutu {
         return tila;
     }
 
+    /**
+     * Metodi hakee tiedon, onko ruutu liputettu.
+     */
     public boolean haeLiputusTila() {
         return onkoLiputettu;
     }
 
+    /**
+     * Metodi muuttaa tiedon liputuksesta
+     */
     public void muutaLiputus() {
-       
+
         if (onkoLiputettu) {
             onkoLiputettu = false;
         } else {
             onkoLiputettu = true;
         }
-         System.out.println(onkoLiputettu);
+
     }
 
     /**

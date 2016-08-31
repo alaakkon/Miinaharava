@@ -16,99 +16,105 @@ import miinaharava.logiikka.PelinKulku;
 
 /**
  *
- * @author alaakkon
+ * Luokka tarjoaa toiminnat tulosten tallentamiseen ja niiden hakemisen
+ * käyttöön.
  */
 public class TiedostonKasittelija {
 
-    //   PelinKulku peli;
     ArrayList<String> lista;
-    //  PeliPaneeli pp;
-
     String tiedostoPolku;
 
     public TiedostonKasittelija() {
 
-        //  this.peli = peli;
         this.lista = new ArrayList<String>();
-        //this.pp = pp;
-        tiedostoPolku = "src/main/resources/tulokset.txt";
+        tiedostoPolku = "tulokset.txt";
         lueTiedosto();
 
     }
 
+    /**
+     * Metodi lukee File tulokset tiedoston ArrayList listaksi
+     */
     public ArrayList lueTiedosto() {
-        File tulokset = new File("src/main/resources/tulokset.txt");
+        File tulokset = new File(tiedostoPolku);
+        if (!tulokset.exists()) {
+            return lista;
+        }
+
         Scanner lukija = null;
 
         try {
             lukija = new Scanner(tulokset);
         } catch (Exception e) {
-            // System.out.println("Tiedoston lukeminen epäonnistui. Virhe: " + e.getMessage());
-            //  return; // poistutaan metodista
         }
-        String tallennettu = "";
+
         while (lukija.hasNextLine()) {
             String rivi = lukija.nextLine();
             lista.add(rivi);
-//            String[] puolitus = rivi.split("=");
-//            String[] koko = puolitus[0].split(",");
-
-//            if ((koko[0].equals(peli.haeLauta().haeRuutuTaulukko().length) && koko[1].equals(peli.haeLauta().haeRuutuTaulukko().length[0]) || koko[0].equals(peli.haeLauta().haeRuutuTaulukko().length[0]) && koko[1].equals(peli.haeLauta().haeRuutuTaulukko().length)) && Integer.parseInt(koko[1]) < Integer.parseInt(pp.tuomio.getText())) {
-//                tallennettu = "" + peli.haeLauta().haeRuutuTaulukko().length + "," + peli.haeLauta().haeRuutuTaulukko()[0].length + "=" + peli.siirtoja();
         }
         lukija.close();
         return lista;
     }
 
+    /**
+     * Metodi korvaa lista:lle syötteen mukaisen merkkijonon kohta merkkijonon
+     * tilalle.
+     *
+     */
     public void korvaaTulos(String tulos) {
         String[] koko = tulos.split("=");
         String[] osat = koko[0].split(",");
         for (int i = 0; i < lista.size(); i++) {
             String kohta = lista.get(i);
-            String[] koko2 = kohta.split("=");
-            String[] osat2 = koko2[0].split(",");
-            if ((osat[0].equals(osat2[0]) && (osat[1].equals(osat2[1]) || osat[0].equals(osat2[1]) && osat[1].equals(osat2[0]))) && (Integer.parseInt(koko[1]) < Integer.parseInt(koko2[1]))) {
-                lista.add(i, tulos);
+            if (kohta.startsWith(koko[0] + "=")) {
+                lista.remove(i);
+                break;
             }
+
         }
+        lista.add(tulos);
         kirjoitaTuloksetTiedostoon();
 
     }
 
+    /**
+     * Metodi kirjoittaa ArrayList lista:n tiedostomuotoon.
+     *
+     */
     private void kirjoitaTuloksetTiedostoon() {
         FileWriter kirjoittaja = null;
         try {
             File tulokset = new File(tiedostoPolku);
             kirjoittaja = new FileWriter(tulokset);
             for (int i = 0; i < lista.size(); i++) {
-
                 kirjoittaja.write(lista.get(i));
-
             }
-
             kirjoittaja.close();
-
         } catch (IOException ex) {
-
         }
     }
 
-    public String haeParasTulos(String tulos) {
-        String palautus="";
+    /**
+     * Metodi vertaa lista:lla olevaa tuloksen osan arvon ja palauttaa pienemmän
+     * osan omaavan.
+     *
+     */
+    public String haeParempiTulos(String tulos) {
+
         String[] koko = tulos.split("=");
-        String[] osat = koko[0].split(",");
+        String[] osa = koko[0].split(",");
         for (int i = 0; i < lista.size(); i++) {
             String kohta = lista.get(i);
-            String[] koko2 = kohta.split("=");
-            String[] osat2 = koko2[0].split(",");
-            if ((osat[0].equals(osat2[0]) && (osat[1].equals(osat2[1]) || osat[0].equals(osat2[1]) && osat[1].equals(osat2[0]))) && (Integer.parseInt(koko[1]) < Integer.parseInt(koko2[1]))) {
-                palautus= kohta;
-                System.out.println(kohta);
-            } else {
-                palautus= tulos;
-                System.out.println("pyh"+tulos);
+            if (kohta.startsWith(koko[0] + "=")) {
+                String[] osa2 = kohta.split("=");
+                if (Integer.parseInt(koko[1]) < Integer.parseInt(osa2[1])) {
+                    return koko[1];
+                } else {
+                    return osa2[1];
+                }
             }
+
         }
-return palautus;
+        return koko[1];
     }
 }

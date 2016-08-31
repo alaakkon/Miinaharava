@@ -6,10 +6,6 @@ package miinaharava.logiikka;
  * and open the template in the editor.
  */
 import miinaharava.logiikka.Ruutu;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -41,10 +37,25 @@ public class RuutuTest {
 
         ruutu.muutaTila(3);
         assertEquals(3, ruutu.haeTila());
-    }@Test
+    }
+
+    @Test
     public void muuttaakoStatuksenOikein() {
 
         ruutu.muutaAvoimuus(true);
-        assertEquals(true,ruutu.onAuki());
+        assertEquals(true, ruutu.onAuki());
+    }
+
+    @Test
+    public void hakeekoLiputuksenOikein() {
+        assertFalse(ruutu.haeLiputusTila());
+    }
+
+    @Test
+    public void muuttaakoLiputuksenOikein() {
+        ruutu.muutaLiputus();
+        assertTrue(ruutu.haeLiputusTila());
+        ruutu.muutaLiputus();
+        assertFalse(ruutu.haeLiputusTila());
     }
 }

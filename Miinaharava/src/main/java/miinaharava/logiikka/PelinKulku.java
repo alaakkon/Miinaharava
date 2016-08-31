@@ -25,6 +25,10 @@ public class PelinKulku {
         return lauta;
     }
 
+    /**
+     * Metodi laskee ja palauttaa avaamattomien ruutujen lukumäärän
+     *
+     */
     public int laskeAvaamattomat() {
         int luku = 0;
         for (int i = 0; i < lauta.haeRuutuTaulukko().length; i++) {
@@ -33,8 +37,7 @@ public class PelinKulku {
                     luku++;
                 }
             }
-
-        }System.out.println(luku);
+        }
         return luku;
     }
 
@@ -47,10 +50,16 @@ public class PelinKulku {
         return peliKaynnissa;
     }
 
+    /**
+     * Metodi muuttaa muuttujan peliKaynnissa falseksi. Peli päättyy.
+     */
     public void lopetaPeli() {
         peliKaynnissa = false;
     }
-    public int siirtoja(){
+/**
+     * Metodi laskee käytettyjen arvausten lukumäärän
+     */
+    public int siirtoja() {
         return this.siirtoja;
     }
 
@@ -165,8 +174,8 @@ public class PelinKulku {
 //        lauta.tulostaStatus();
 //    }
     private void tarkistaPelinLoppuminen() {
-       // int luku = lauta.montakoAvaamattomiaJaljella();
-       int luku=laskeAvaamattomat();
+        // int luku = lauta.montakoAvaamattomiaJaljella();
+        int luku = laskeAvaamattomat();
         if (luku < 2) {
             peliKaynnissa = false;
         }

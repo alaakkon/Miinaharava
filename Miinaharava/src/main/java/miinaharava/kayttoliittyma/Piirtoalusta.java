@@ -5,10 +5,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.swing.JPanel;
 import miinaharava.logiikka.PelinKulku;
 import miinaharava.logiikka.Ruutu;
@@ -27,16 +23,12 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private PeliPaneeli pp;
     private TiedostonKasittelija tk;
 
-    /**
-     *
-     * @param peli
-     */
     public Piirtoalusta(PelinKulku peli, PeliPaneeli pp) {
         this.peli = peli;
         this.kerroin = 20;
         this.ruudut = peli.haeLauta().haeRuutuTaulukko();
         this.pp = pp;
-        this.tk= new TiedostonKasittelija();
+        this.tk = new TiedostonKasittelija();
 
     }
 
@@ -53,7 +45,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param g
      */
     private void piirraLauta(Graphics g) {
-
         for (int i = 0; i < ruudut.length; i++) {
             for (int j = 0; j < ruudut[0].length; j++) {
                 piirraRuutu(g, i, j);
@@ -69,9 +60,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
      * @param x leveyden koordinaatti
      */
     private void piirraRuutu(Graphics g, int y, int x) {
-
         super.setBackground(Color.LIGHT_GRAY);
-
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].onAuki()) {
             if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
                 piirraMiina(g, y, x);
@@ -82,7 +71,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         } else {
             piirraAvaamaton(g, y, x);
         }
-
     }
 
     /**
@@ -95,15 +83,12 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private void piirraLoppu(Graphics g, int y, int x) {
         this.y = 0;
         this.x = 0;
-
         for (int i = 0; i < ruudut.length; i++) {
             for (int j = 0; j < ruudut[0].length; j++) {
                 ruudut[i][j].muutaAvoimuus(true);
-
             }
         }
         repaint();
-
     }
 
     private void piirraMiina(Graphics g, int y, int x) {
@@ -117,7 +102,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
             g.setColor(Color.red);
             g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
         }
-
     }
 
     /**
@@ -142,15 +126,14 @@ public class Piirtoalusta extends JPanel implements MouseListener {
             g.drawRect(x * kerroin, y * kerroin, kerroin, kerroin);
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
         }
-
     }
 
     /**
      * Metodi piirtää avaamattoman ruudun avaamattomana.
      *
      * @param g
-     * @param y
-     * @param x
+     * @param y pelilaudan korkeuden koordinaatti
+     * @param x pelilaudan leveyden koordinaatti
      */
     private void piirraAvaamaton(Graphics g, int y, int x) {
         if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeLiputusTila() == true) {
@@ -165,9 +148,15 @@ public class Piirtoalusta extends JPanel implements MouseListener {
                 g.drawRect(x * kerroin, kerroin * y, kerroin, kerroin);
             }
         }
-
     }
 
+    /**
+     * Metodi piirtää lipun syötteen antamalle ruudulle
+     *
+     * @param g
+     * @param y pelilaudan korkeuden koordinaatti
+     * @param x pelilaudan leveyden koordinaatti
+     */
     private void piirraLippu(Graphics g, int y, int x) {
         try {
             String lippu = "lippu";
@@ -202,12 +191,6 @@ public class Piirtoalusta extends JPanel implements MouseListener {
                 if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
                     lisaaHavioTeksti();
                 } else {
-//                    try {
-//
-//                      //  pp.tulokset.write(peli.haeLauta().haeRuutuTaulukko().length + "," + peli.haeLauta().haeRuutuTaulukko()[0].length + "=" + peli.siirtoja());
-//                    } catch (IOException ex) {
-//                        Logger.getLogger(Piirtoalusta.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
                     lisaaVoittoTeksti();
                 }
                 piirraLoppu(getGraphics(), y, x);
@@ -233,20 +216,21 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private void paivitaAvattujenMaara() {
         int luku = peli.laskeAvaamattomat();
         pp.tuomio.setText("Avaamattomia ruutuja jäljellä " + luku);
-
     }
 
     private void lisaaVoittoTeksti() {
-        String tulos=tk.haeParasTulos(""+ruudut.length+","+ruudut[0].length);
-        System.out.println(tulos);
-       tk.korvaaTulos(""+ruudut.length+","+ruudut[0].length+"="+pp.kello.toString());
-        pp.tuomio.setText("Voitit! Käytit " + peli.siirtoja() + " siirtoa.\n Nopein tulos tämän kokoisella ruudukolla on "+tulos);
-
+        String haettava = ruudut.length + "," + ruudut[0].length + "=" + pp.kello.getText();
+        String[] pilkottu = haettava.split("=");
+        String tulos = tk.haeParempiTulos(haettava);
+        if (pilkottu[1].equals(tulos)) {
+            tk.korvaaTulos(haettava);
+            pp.tuomio.setText("Onnistuit! Käytit " + peli.siirtoja() + " ja ratkaisit tehtävät toistaiseksi nopeimmin ajalla " + pp.kello.getText() + " sekuntia.");
+        } else {
+            pp.tuomio.setText("Onnistuit! Käytit " + peli.siirtoja() + " siirtoa.\n Nopein tulos tämän kokoisella ruudukolla on " + tulos + " sekuntia.");
+        }
     }
 
     private void lisaaHavioTeksti() {
         pp.tuomio.setText("Ähäähää! Miinan kosto on kauhea!");
-    
     }
-
 }

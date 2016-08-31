@@ -130,20 +130,4 @@ public class Lauta {
         return (pelilauta.length * pelilauta[0].length * 15) / 100;
     }
 
-    public int montakoAvaamattomiaJaljella() {
-        int montakoAuki = 0;
-        int laskuri = 0;
-        for (int i = 0; i < haeRuutuTaulukko().length; i++) {
-            for (int j = 0; j < haeRuutuTaulukko()[0].length; j++) {
-                if (haeRuutuTaulukko()[i][j].onAuki()) {
-                    montakoAuki++;
-                }
-                laskuri++;
-            }
-            
-        }int tulos = laskuri - montakoAuki - montakoMiinaa();
-      
-      //  System.out.println("omg"+tulos);
-        return laskuri - montakoAuki - montakoMiinaa();
-    }
 }

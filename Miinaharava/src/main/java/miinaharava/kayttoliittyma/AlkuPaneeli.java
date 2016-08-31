@@ -26,13 +26,9 @@ public class AlkuPaneeli implements Runnable {
     private PelinKulku pelinKulku;
     private AlkuPaneelinKuuntelija alkuPaneelinKuuntelija;
     private KayttoLiittyma k;
-   
 
     public AlkuPaneeli(KayttoLiittyma k) {
-        this.luku = luku;
-        this.leveys = leveys;
-        this.k=k;
-        
+        this.k = k;
     }
 
     @Override
@@ -42,28 +38,22 @@ public class AlkuPaneeli implements Runnable {
         alku.add(pan);
         alku.pack();
         alku.setVisible(true);
-       
-        
 
     }
 
     private JPanel luoValikko() {
         JPanel paneeli = new JPanel(new GridLayout(3, 3));
-        JTextField korkeus = new JTextField();
-        JTextField leveys = new JTextField();
-      nappi = new JButton("Aloita peli");
+        JTextField ruudukonKorkeus = new JTextField();
+        JTextField ruudukonleveys = new JTextField();
+        nappi = new JButton("Aloita peli");
         paneeli.add(new JLabel("Ruudukon korkeus: ( min 1) "));
-        paneeli.add(korkeus);
+        paneeli.add(ruudukonKorkeus);
         paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
-        paneeli.add(leveys);
+        paneeli.add(ruudukonleveys);
         paneeli.add(nappi);
-        alkuPaneelinKuuntelija = new AlkuPaneelinKuuntelija(k,korkeus, leveys);
+        alkuPaneelinKuuntelija = new AlkuPaneelinKuuntelija(k, ruudukonKorkeus, ruudukonleveys);
         nappi.addActionListener(alkuPaneelinKuuntelija);
         return paneeli;
     }
-
-//    public PelinKulku haePeli() {
-//        return alkuPaneelinKuuntelija.haePeli();
-//    }
 
 }

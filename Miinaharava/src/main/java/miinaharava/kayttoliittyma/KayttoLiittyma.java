@@ -22,11 +22,9 @@ public class KayttoLiittyma {
     private PelinKulku peli;
     private AlkuPaneelinKuuntelija apk;
 
-
     public KayttoLiittyma() {
-
         luoAlkupaneeli();
-       
+
     }
 
     private void luoAlkupaneeli() {
@@ -35,16 +33,10 @@ public class KayttoLiittyma {
         //   luoPelipaneeli();
     }
 
-//    private void kaynnistaPeli() {
-//        luoPelipaneeli();
-//
-//    }
     public void luoPelipaneeli(int korkeus, int leveys) {
-        // peli = apk.haePeli();
-        // peli = new PelinKulku(peli.haeLauta().haeRuutuTaulukko().length, peli.haeLauta().haeRuutuTaulukko()[0].length);
         Piirtoalusta p = new Piirtoalusta(new PelinKulku(korkeus, leveys), peliPaneeli);
         peliPaneeli = new PeliPaneeli(new PelinKulku(korkeus, leveys));
-        // peliPaneeli.run();
+
     }
 
 }
