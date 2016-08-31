@@ -4,5 +4,5 @@ Yksinpeli, jossa pelilaudalle sijoitetaan piiloon miinoja, joiden paikat pelaaja
 - [Aiheen kuvaus](Dokumentaatio/AiheenKuvausJaMääritelmä.md)
 - [Tuntikirjanpito](Dokumentaatio/Tuntikirjanpito.md)
 - [Luokkakaavio](Dokumentaatio/Luokkakaavio4.png "Luokkakaavio")
-- [Pit](https://htmlpreview.github.io/?https://github.com/alaakkon/Miinaharava/blob/master/Miinaharava/target/pit-reports/201608241529/index.html)
+- [Pit](https://htmlpreview.github.io/?https://github.com/alaakkon/Miinaharava/blob/master/Miinaharava/target/pit-reports/201608312047/index.html)
 - [Checkstyle](https://htmlpreview.github.io/?https://github.com/alaakkon/Miinaharava/blob/master/Miinaharava/target/site/checkstyle.html)
