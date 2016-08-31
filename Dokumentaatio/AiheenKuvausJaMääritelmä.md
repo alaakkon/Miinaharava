@@ -5,9 +5,9 @@ Toteutetaan yksinpeli, jossa pelaajan ruudukon koon valitsemalle pelilaudalle lu
 Pelaaja valitsee pelin vaikeustason pelilaudan koon mukaisesti.
 Tämä onnistuu mikäli ruudukon koko on annetuissa rajoissa. (Vähintään seitsemän ruudun kokoinen)
 Pelaaja antaa syötteenä pelilaudan koordinaatit ja ruudun arvellun sisällön. Sisältöjä ovat joko miina tai tyhjä ruutu. Peli päättyy, kun pelaaja on antanut miinojen oikeat koordinaatit. Kuitenkin mikäli pelaaja antaa sisällöksi tyhjän ruutuun, jonka sisältönä onkin miina peli päättyy. Väärästä miinan arvelusta ei tapahdu mitään.
-#Sekvenssikaaviot
+###Sekvenssikaaviot
 - [PelinKulku_p=new_PelinKulku(3,3)](PelinKulku_p=new_PelinKulku(2)(1).png)
 - [p.pelaa()](p.pelaa.png)
-- [arvoMiinatLaudalle()](arvoMiinatlaudalle.png)
+- [arvoMiinatLaudalle()](arvoMiinatLaudalle.png)
 - [merkitseVierustat()](merkitseVierustat.png)
 - [avaaNolla()](avaaNolla.png)
