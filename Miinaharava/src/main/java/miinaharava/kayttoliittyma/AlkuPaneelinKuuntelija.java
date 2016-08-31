@@ -20,19 +20,21 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
     private JTextField leveys;
     private PelinKulku peli;
     private PeliPaneeli pp;
+    private KayttoLiittyma k;
 
-    public AlkuPaneelinKuuntelija(JTextField korkeus, JTextField leveys) {
+    public AlkuPaneelinKuuntelija(KayttoLiittyma k,JTextField korkeus, JTextField leveys) {
         this.korkeus = korkeus;
         this.leveys = leveys;
+        this.k=k;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-   
-        this.peli = new PelinKulku(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
-        pp = new PeliPaneeli(new Piirtoalusta(peli));
-        pp.run();
-        System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
+   k.luoPelipaneeli(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
+       
+//        pp = new PeliPaneeli(new Piirtoalusta(peli));
+//        pp.run();
+//        System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
 
     public PelinKulku haePeli() {

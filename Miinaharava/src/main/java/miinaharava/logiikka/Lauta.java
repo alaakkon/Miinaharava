@@ -62,8 +62,8 @@ public class Lauta {
             arvontaLista.add(i);
         }
         Collections.shuffle(arvontaLista);
-        int miinoja=montakoMiinaa();
-        
+        int miinoja = montakoMiinaa();
+
         for (int i = 0; i < miinoja; i++) {
             luku = arvontaLista.get(i);
             rivi = luku / pelilauta[0].length;
@@ -72,14 +72,14 @@ public class Lauta {
         }
     }
 // Nämä lähtevät pois...
-    public void tulostaTilat() {
-        for (int y = 0; y < pelilauta.length; y++) {
-            System.out.println("");
-            for (int x = 0; x < pelilauta[0].length; x++) {
-                System.out.print(pelilauta[y][x].haeTila());
-            }
-        }
-    }
+//    public void tulostaTilat() {
+//        for (int y = 0; y < pelilauta.length; y++) {
+    //         System.out.println("");
+    //       for (int x = 0; x < pelilauta[0].length; x++) {
+    //         System.out.print(pelilauta[y][x].haeTila());
+    //   }
+    // }
+    //  }
 
 //    public void tulostaAvoimuudet() {
 //        for (int y = 0; y < pelilauta.length; y++) {
@@ -94,7 +94,6 @@ public class Lauta {
 //            }
 //        }
 //    }
-
     /**
      * Metodi merkitsee miinoja sisältävien ruutuihin kyseisen ruutuun
      * kosketuksissa olevien miinojen lukumäärän.
@@ -129,5 +128,22 @@ public class Lauta {
 
     public int montakoMiinaa() {
         return (pelilauta.length * pelilauta[0].length * 15) / 100;
+    }
+
+    public int montakoAvaamattomiaJaljella() {
+        int montakoAuki = 0;
+        int laskuri = 0;
+        for (int i = 0; i < haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < haeRuutuTaulukko()[0].length; j++) {
+                if (haeRuutuTaulukko()[i][j].onAuki()) {
+                    montakoAuki++;
+                }
+                laskuri++;
+            }
+            
+        }int tulos = laskuri - montakoAuki - montakoMiinaa();
+      
+      //  System.out.println("omg"+tulos);
+        return laskuri - montakoAuki - montakoMiinaa();
     }
 }

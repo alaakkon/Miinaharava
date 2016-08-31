@@ -25,11 +25,14 @@ public class AlkuPaneeli implements Runnable {
     private int leveys;
     private PelinKulku pelinKulku;
     private AlkuPaneelinKuuntelija alkuPaneelinKuuntelija;
+    private KayttoLiittyma k;
    
 
-    public AlkuPaneeli() {
+    public AlkuPaneeli(KayttoLiittyma k) {
         this.luku = luku;
         this.leveys = leveys;
+        this.k=k;
+        
     }
 
     @Override
@@ -54,7 +57,7 @@ public class AlkuPaneeli implements Runnable {
         paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
         paneeli.add(leveys);
         paneeli.add(nappi);
-        alkuPaneelinKuuntelija = new AlkuPaneelinKuuntelija(korkeus, leveys);
+        alkuPaneelinKuuntelija = new AlkuPaneelinKuuntelija(k,korkeus, leveys);
         nappi.addActionListener(alkuPaneelinKuuntelija);
         return paneeli;
     }

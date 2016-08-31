@@ -5,6 +5,10 @@
  */
 package miinaharava.kayttoliittyma;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import miinaharava.logiikka.PelinKulku;
 
 /**
@@ -18,31 +22,29 @@ public class KayttoLiittyma {
     private PelinKulku peli;
     private AlkuPaneelinKuuntelija apk;
 
-    public KayttoLiittyma() {
-        alkuPaneeli = new AlkuPaneeli();
-        luoAlkupaneeli();
 
+    public KayttoLiittyma() {
+
+        luoAlkupaneeli();
+       
     }
 
     private void luoAlkupaneeli() {
+        alkuPaneeli = new AlkuPaneeli(this);
         alkuPaneeli.run();
-     //   luoPelipaneeli();
+        //   luoPelipaneeli();
     }
 
 //    private void kaynnistaPeli() {
 //        luoPelipaneeli();
 //
 //    }
-
-    private void lopetaPeli() {
-
+    public void luoPelipaneeli(int korkeus, int leveys) {
+        // peli = apk.haePeli();
+        // peli = new PelinKulku(peli.haeLauta().haeRuutuTaulukko().length, peli.haeLauta().haeRuutuTaulukko()[0].length);
+        Piirtoalusta p = new Piirtoalusta(new PelinKulku(korkeus, leveys), peliPaneeli);
+        peliPaneeli = new PeliPaneeli(new PelinKulku(korkeus, leveys));
+        // peliPaneeli.run();
     }
 
-//    private void luoPelipaneeli() {
-//        peli = apk.haePeli();
-//        // peli = new PelinKulku(peli.haeLauta().haeRuutuTaulukko().length, peli.haeLauta().haeRuutuTaulukko()[0].length);
-//        Piirtoalusta p = new Piirtoalusta(peli);
-//        peliPaneeli = new PeliPaneeli(p);
-//        peliPaneeli.run();
-//    }
 }

@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import miinaharava.logiikka.PelinKulku;
 import miinaharava.logiikka.Ruutu;
 
@@ -22,15 +24,19 @@ public class Piirtoalusta extends JPanel implements MouseListener {
     private int x;
     private int y;
     private Ruutu[][] ruudut;
+    private PeliPaneeli pp;
+    private TiedostonKasittelija tk;
 
     /**
      *
      * @param peli
      */
-    public Piirtoalusta(PelinKulku peli) {
+    public Piirtoalusta(PelinKulku peli, PeliPaneeli pp) {
         this.peli = peli;
         this.kerroin = 20;
         this.ruudut = peli.haeLauta().haeRuutuTaulukko();
+        this.pp = pp;
+        this.tk= new TiedostonKasittelija();
 
     }
 
@@ -128,15 +134,13 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         if (tila == 0) {
             g.setColor(Color.GRAY);
             g.drawRect(x * kerroin, y * kerroin, kerroin, kerroin);
+
         } else {
             String nimi = "" + tila;
             Image kuva = KuvanLataaminen.haeKuva(nimi);
             g.setColor(Color.gray);
             g.drawRect(x * kerroin, y * kerroin, kerroin, kerroin);
             g.drawImage(kuva, x * kerroin, y * kerroin, null);
-        }
-        if (vielaArvattavia() < 1) {
-            piirraLoppu(g, y, x);
         }
 
     }
@@ -184,11 +188,31 @@ public class Piirtoalusta extends JPanel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+
         this.x = e.getX() / kerroin;
         this.y = e.getY() / kerroin;
-        peli.pelaa(y, x, e.getButton());
-        repaint();
+        if (x <= ruudut[0].length && y <= ruudut.length) {
+            peli.pelaa(y, x, e.getButton());
+            if (peli.onkoPeliKaynnissa()) {
+                paivitaAvattujenMaara();
+                repaint();
 
+            } else {
+
+                if (peli.haeLauta().haeRuutuTaulukko()[y][x].haeTila() == 9) {
+                    lisaaHavioTeksti();
+                } else {
+//                    try {
+//
+//                      //  pp.tulokset.write(peli.haeLauta().haeRuutuTaulukko().length + "," + peli.haeLauta().haeRuutuTaulukko()[0].length + "=" + peli.siirtoja());
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(Piirtoalusta.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+                    lisaaVoittoTeksti();
+                }
+                piirraLoppu(getGraphics(), y, x);
+            }
+        }
     }
 
     @Override
@@ -206,20 +230,23 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         System.out.println("");
     }
 
-    private int vielaArvattavia() {
-        int montakoAuki = 0;
-        int laskuri = 0;
-        for (int i = 0; i < peli.haeLauta().haeRuutuTaulukko().length; i++) {
-            for (int j = 0; j < peli.haeLauta().haeRuutuTaulukko()[0].length; j++) {
-                if (peli.haeLauta().haeRuutuTaulukko()[i][j].onAuki()) {
-                    montakoAuki++;
-                } else {
+    private void paivitaAvattujenMaara() {
+        int luku = peli.laskeAvaamattomat();
+        pp.tuomio.setText("Avaamattomia ruutuja jäljellä " + luku);
 
-                }
-                laskuri++;
-            }
-        }
-        System.out.println((laskuri - montakoAuki) - peli.haeLauta().montakoMiinaa());
-        return (laskuri - montakoAuki) - peli.haeLauta().montakoMiinaa();
     }
+
+    private void lisaaVoittoTeksti() {
+        String tulos=tk.haeParasTulos(""+ruudut.length+","+ruudut[0].length);
+        System.out.println(tulos);
+       tk.korvaaTulos(""+ruudut.length+","+ruudut[0].length+"="+pp.kello.toString());
+        pp.tuomio.setText("Voitit! Käytit " + peli.siirtoja() + " siirtoa.\n Nopein tulos tämän kokoisella ruudukolla on "+tulos);
+
+    }
+
+    private void lisaaHavioTeksti() {
+        pp.tuomio.setText("Ähäähää! Miinan kosto on kauhea!");
+    
+    }
+
 }

@@ -9,7 +9,8 @@ import miinaharava.logiikka.Lauta;
 public class PelinKulku {
 
     private Lauta lauta;
-    boolean peliKaynnissa;
+    private boolean peliKaynnissa;
+    private int siirtoja;
 
     public PelinKulku(int korkeus, int leveys) {
         this.lauta = new Lauta(korkeus, leveys);
@@ -24,6 +25,19 @@ public class PelinKulku {
         return lauta;
     }
 
+    public int laskeAvaamattomat() {
+        int luku = 0;
+        for (int i = 0; i < lauta.haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < lauta.haeRuutuTaulukko()[0].length; j++) {
+                if (!lauta.haeRuutuTaulukko()[i][j].onAuki()) {
+                    luku++;
+                }
+            }
+
+        }System.out.println(luku);
+        return luku;
+    }
+
     /**
      * Metodilla voidaan tarkistaa onko peli käynnissä vai loppunut.
      *
@@ -35,6 +49,9 @@ public class PelinKulku {
 
     public void lopetaPeli() {
         peliKaynnissa = false;
+    }
+    public int siirtoja(){
+        return this.siirtoja;
     }
 
     /**
@@ -74,6 +91,8 @@ public class PelinKulku {
             lauta.haeRuutuTaulukko()[y][x].muutaLiputus();
 
         }
+        tarkistaPelinLoppuminen();
+        siirtoja++;
 
     }
 
@@ -138,11 +157,18 @@ public class PelinKulku {
 //        }
 //        return b;
 //    }
-//    public void tulostaStatus() {
+//    public void tulostaStatus throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.() {
 //        lauta.tulostaTilat();
 //    }
 //
 //    public void tulostaTilat() {
 //        lauta.tulostaStatus();
 //    }
+    private void tarkistaPelinLoppuminen() {
+       // int luku = lauta.montakoAvaamattomiaJaljella();
+       int luku=laskeAvaamattomat();
+        if (luku < 2) {
+            peliKaynnissa = false;
+        }
+    }
 }
