@@ -30,10 +30,19 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int korkeusLukuna = Integer.parseInt(korkeus.getText());
-        int leveysLukuna = Integer.parseInt(leveys.getText());
+
+        String syote1 = korkeus.getText();
+        String syote2 = leveys.getText();
+        int korkeusLukuna;
+        int leveysLukuna;
+        try {
+            korkeusLukuna = Integer.parseInt(korkeus.getText());
+            leveysLukuna = Integer.parseInt(leveys.getText());
+        } catch (Exception eu) {
+            korkeusLukuna = 30;
+            leveysLukuna = 30;
+        }
 
         k.luoPelipaneeli(korkeusLukuna, leveysLukuna);
-        // System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
 }

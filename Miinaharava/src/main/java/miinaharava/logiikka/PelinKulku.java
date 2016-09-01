@@ -1,7 +1,5 @@
 package miinaharava.logiikka;
 
-import miinaharava.logiikka.Lauta;
-
 /**
  *
  * Luokka tarjoaa Miinaharava pelin pelin kulkemisen toiminnat.
@@ -167,7 +165,7 @@ public class PelinKulku {
     private void tarkistaPelinVoittaminen() {
     int miinoja=lauta.montakoMiinaa();
     int avaamattomat= laskeAvaamattomat();
-       if(avaamattomat-miinoja<1){
+       if(avaamattomat==miinoja){
            this.peliKaynnissa=false;
        }
     }
@@ -180,10 +178,10 @@ public class PelinKulku {
      * @param leveys
      */
     private void tarkistaParametrit(int korkeus, int leveys) {
-        if (korkeus < 1 || korkeus > 30) {
+        if (korkeus < 2 || korkeus > 30) {
             this.korkeus = 30;
         }
-        if (leveys < 1 || leveys > 30) {
+        if (leveys < 2 || leveys > 30) {
             this.leveys = 30;
         }
     }
