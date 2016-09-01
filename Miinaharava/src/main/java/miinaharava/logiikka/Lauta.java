@@ -64,6 +64,9 @@ public class Lauta {
         }
         Collections.shuffle(arvontaLista);
         int miinoja = montakoMiinaa();
+        if (miinoja == 0) {
+            miinoja = 1;
+        }
 
         for (int i = 0; i < miinoja; i++) {
             luku = arvontaLista.get(i);
@@ -71,7 +74,7 @@ public class Lauta {
             sarake = luku % pelilauta[0].length;
             pelilauta[rivi][sarake].muutaTila(9);
         }
-        
+
     }
 // Nämä lähtevät pois...
 

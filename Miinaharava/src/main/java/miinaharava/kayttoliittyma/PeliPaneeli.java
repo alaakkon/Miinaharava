@@ -43,7 +43,7 @@ public class PeliPaneeli implements Runnable {
     @Override
     public void run() {
         kehys = new JFrame("Miinaharava");
-        kehys.setPreferredSize(new Dimension(600, 600));
+        kehys.setPreferredSize(new Dimension(1000,1000));
         kehys.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit();
 

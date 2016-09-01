@@ -46,9 +46,9 @@ public class AlkuPaneeli implements Runnable {
         JTextField ruudukonKorkeus = new JTextField();
         JTextField ruudukonleveys = new JTextField();
         nappi = new JButton("Aloita peli");
-        paneeli.add(new JLabel("Ruudukon korkeus: ( min 1) "));
+        paneeli.add(new JLabel("Ruudukon korkeus: "));
         paneeli.add(ruudukonKorkeus);
-        paneeli.add(new JLabel("Ruudukon leveys: (min (7)"));
+        paneeli.add(new JLabel("Ruudukon leveys: "));
         paneeli.add(ruudukonleveys);
         paneeli.add(nappi);
         alkuPaneelinKuuntelija = new AlkuPaneelinKuuntelija(k, ruudukonKorkeus, ruudukonleveys);
