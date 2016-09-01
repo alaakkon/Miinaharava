@@ -33,9 +33,4 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
         k.luoPelipaneeli(Integer.parseInt(korkeus.getText()), Integer.parseInt(leveys.getText()));
         System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
-
-    public PelinKulku haePeli() {
-        return this.peli;
-    }
-
 }

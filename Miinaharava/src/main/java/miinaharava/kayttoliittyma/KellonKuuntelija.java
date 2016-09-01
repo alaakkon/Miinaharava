@@ -34,9 +34,6 @@ public class KellonKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-//        aika = aika + 1;
-//        alue.setText("" + aika);
-        //}
         if (peli.onkoPeliKaynnissa()) {
             aika = aika + 1;
             alue.setText("" + aika);
