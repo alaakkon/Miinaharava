@@ -94,10 +94,10 @@ public class PelinKulku {
                 peliKaynnissa = false;
             } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
                 avaaRuutu(y, x);
-                tarkistaPelinLoppuminen();
+              
             } else {
                 avaaNolla(y, x);
-                tarkistaPelinLoppuminen();
+               
             }
         } else if (komento == 3) {
             lauta.haeRuutuTaulukko()[y][x].muutaLiputus();

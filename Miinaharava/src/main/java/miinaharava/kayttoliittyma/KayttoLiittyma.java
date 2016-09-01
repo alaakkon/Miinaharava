@@ -19,8 +19,8 @@ public class KayttoLiittyma {
 
     private PeliPaneeli peliPaneeli;
     private AlkuPaneeli alkuPaneeli;
-    private PelinKulku peli;
-    private AlkuPaneelinKuuntelija apk;
+  //  private PelinKulku peli;
+   // private AlkuPaneelinKuuntelija apk;
 
     public KayttoLiittyma() {
         luoAlkupaneeli();
@@ -30,7 +30,7 @@ public class KayttoLiittyma {
     private void luoAlkupaneeli() {
         alkuPaneeli = new AlkuPaneeli(this);
         alkuPaneeli.run();
-        //   luoPelipaneeli();
+       
     }
 
     public void luoPelipaneeli(int korkeus, int leveys) {
