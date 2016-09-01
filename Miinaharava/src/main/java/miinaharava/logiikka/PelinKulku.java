@@ -109,8 +109,9 @@ public class PelinKulku {
             lauta.haeRuutuTaulukko()[y][x].muutaLiputus();
 
         }
-        System.out.println(laskeAvaamattomat());
-        tarkistaPelinLoppuminen();
+//        System.out.println(laskeAvaamattomat());
+//        System.out.println(lauta.montakoMiinaa());
+        tarkistaPelinVoittaminen();
         siirtoja++;
 
     }
@@ -163,15 +164,12 @@ public class PelinKulku {
     }
 
 //    }// tämä kusee
-    private void tarkistaPelinLoppuminen() {
-        int kaikki = lauta.haeRuutuTaulukko().length * lauta.haeRuutuTaulukko()[0].length;
-        int avattavat = kaikki - lauta.montakoMiinaa();
-        int avatut = avattavat - laskeAvaamattomat();
-        System.out.println(avatut);
-        if (avatut < 2) {
-            peliKaynnissa = false;
-            System.out.println("pk=" + peliKaynnissa);
-        }
+    private void tarkistaPelinVoittaminen() {
+    int miinoja=lauta.montakoMiinaa();
+    int avaamattomat= laskeAvaamattomat();
+       if(avaamattomat-miinoja<1){
+           this.peliKaynnissa=false;
+       }
     }
 
     /**
