@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="miinaharava.logiikka.LautaTest" time="0.033" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="miinaharava.logiikka.LautaTest" time="0.025" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -60,17 +60,17 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="miinaharava.logiikka.LautaTest" name="luokoOikeanKorkuisenPelilaudan" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.LautaTest" name="arpookoOikeanMaaranMiinojaKunRuudukkoLiianPieni" time="0"/>
+  <testcase classname="miinaharava.logiikka.LautaTest" name="arpookoOikeanMaaranMiinojaKunRuudukkoLiianPieni" time="0.001"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="luokoOikeanLevysenPelilaudan" time="0"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanKaakkoonOikein" time="0"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanKoilliseenOikein" time="0.001"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="kutsuukoAlustaLaudanMetoditOikein" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanLuoteeseenOikein" time="0.001"/>
+  <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanLuoteeseenOikein" time="0"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanYlosOikein" time="0"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanOikealleOikein" time="0"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanVasemmalleOikein" time="0"/>
-  <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanLounaaseenOikein" time="0"/>
+  <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanLounaaseenOikein" time="0.001"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="arpookoOikeanMaaranMiinoja" time="0.001"/>
   <testcase classname="miinaharava.logiikka.LautaTest" name="alustaakoOikeinKokoisenPelilaudan" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanAlasOikein" time="0.001"/>
+  <testcase classname="miinaharava.logiikka.LautaTest" name="merkitseekoVierustanAlasOikein" time="0"/>
 </testsuite>

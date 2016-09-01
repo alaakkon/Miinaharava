@@ -60,15 +60,15 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="toimiikoOnkoPeliKaynnissa" time="0"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="avaakoNormaalinRuudun" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="lopettaakoPelin" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="pelaakoOikein" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="avaakoViereisetNollat" time="0.001"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="avaakoNormaalinRuudun" time="0"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="lopettaakoPelin" time="0"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="pelaakoOikein" time="0"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="avaakoViereisetNollat" time="0"/>
   <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="laskeekoSiirrotOikein" time="0"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="tarkistaakoOikeinParametrit" time="0.009"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="tarkistaakoOikeinParametrit" time="0.007"/>
   <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="tarkistaakoPelinLoppumisen" time="0.001"/>
   <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="huomaakoMiinan" time="0.004"/>
   <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="avaakoNollat" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="laskeekoAvaamattomat" time="0.001"/>
-  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="tarkistaakoPelinLoppumisenMiinaanOsuttua" time="0"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="laskeekoAvaamattomat" time="0.009"/>
+  <testcase classname="miinaharava.logiikka.PelinKulkuTest" name="tarkistaakoPelinLoppumisenMiinaanOsuttua" time="0.003"/>
 </testsuite>
