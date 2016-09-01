@@ -61,6 +61,18 @@ public class PelinKulkuTest {
     }
 
     @Test
+    public void tarkistaakoOikeinParametrit() {
+
+        PelinKulku eka = new PelinKulku(31, 31);
+        assertEquals(eka.haeLauta().haeRuutuTaulukko().length, 30);
+        assertEquals(eka.haeLauta().haeRuutuTaulukko()[0].length, 30);
+        PelinKulku toka = new PelinKulku(0, 0);
+        assertEquals(toka.haeLauta().haeRuutuTaulukko().length, 30);
+        assertEquals(toka.haeLauta().haeRuutuTaulukko()[0].length, 30);
+
+    }
+
+    @Test
     public void huomaakoMiinan() {
 
         apumetodi(9);

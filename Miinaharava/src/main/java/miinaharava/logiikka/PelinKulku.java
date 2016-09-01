@@ -11,11 +11,17 @@ public class PelinKulku {
     private Lauta lauta;
     private boolean peliKaynnissa;
     private int siirtoja;
+    private int korkeus;
+    private int leveys;
 
     public PelinKulku(int korkeus, int leveys) {
-        this.lauta = new Lauta(korkeus, leveys);
+        this.korkeus = korkeus;
+        this.leveys = leveys;
+        tarkistaParametrit(korkeus, leveys);
+        this.lauta = new Lauta(this.korkeus, this.leveys);
         lauta.alustaLauta();
         this.peliKaynnissa = true;
+
     }
 
     /**
@@ -58,7 +64,7 @@ public class PelinKulku {
     }
 
     /**
-     * Metodi laskee käytettyjen arvausten lukumäärän
+     * Metodi laskee käytettyjen arvausten lukumäärän.
      */
     public int siirtoja() {
         return this.siirtoja;
@@ -94,10 +100,10 @@ public class PelinKulku {
                 peliKaynnissa = false;
             } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
                 avaaRuutu(y, x);
-              
+
             } else {
                 avaaNolla(y, x);
-               
+
             }
         } else if (komento == 3) {
             lauta.haeRuutuTaulukko()[y][x].muutaLiputus();
@@ -165,6 +171,22 @@ public class PelinKulku {
         if (avatut < 2) {
             peliKaynnissa = false;
             System.out.println("pk=" + peliKaynnissa);
+        }
+    }
+
+    /**
+     * Metodi tarkastaa ovatko syötteen parametrit sopivat ja muutta ne, jos
+     * näin ei ole.
+     *
+     * @param korkeus
+     * @param leveys
+     */
+    private void tarkistaParametrit(int korkeus, int leveys) {
+        if (korkeus < 1 || korkeus > 30) {
+            this.korkeus = 30;
+        }
+        if (leveys < 1 || leveys > 30) {
+            this.leveys = 30;
         }
     }
 }

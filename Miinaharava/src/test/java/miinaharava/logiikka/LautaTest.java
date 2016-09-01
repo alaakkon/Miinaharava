@@ -23,10 +23,7 @@ public class LautaTest {
     private Lauta l1;
     private Lauta l2;
     private Lauta l3;
-//
-    //  private Ruutu[][] lauta;
-//    private int[][] laut;
-//    private int[][] lau;
+    private Lauta l4;
     private int x;
     private int y;
 
@@ -35,7 +32,7 @@ public class LautaTest {
         l1 = new Lauta(8, 8);
         l2 = new Lauta(3, 3);
         l3 = new Lauta(7, 1);
-        //lauta= new Ruutu[0][0];
+        l4 = new Lauta(1,1);
         this.y = 0;
         this.x = 0;
     }
@@ -63,18 +60,18 @@ public class LautaTest {
             for (int j = 0; j < l2.haeRuutuTaulukko()[0].length; j++) {
                 if (l2.haeRuutuTaulukko()[i][j].haeTila() == 9) {
                     luku++;
-                }else if(l2.haeRuutuTaulukko()[i][j].haeTila() != 9&&l2.haeRuutuTaulukko()[i][j].haeTila() != 0){
+                } else if (l2.haeRuutuTaulukko()[i][j].haeTila() != 9 && l2.haeRuutuTaulukko()[i][j].haeTila() != 0) {
                     miina++;
                 }
             }
         }
-        boolean onkoTotta=false;
-        if(miina!=0){
-            onkoTotta=true;
+        boolean onkoTotta = false;
+        if (miina != 0) {
+            onkoTotta = true;
         }
         assertEquals(l2.haeRuutuTaulukko().length, 3);
         assertFalse(l2.haeRuutuTaulukko()[0][0].onAuki());
-        assertEquals(luku,1);
+        assertEquals(luku, 1);
         assertTrue(onkoTotta);
 
     }
@@ -93,8 +90,22 @@ public class LautaTest {
             }
         }
         assertEquals(luku, luku2);
-    }
-
+    }  
+ @Test
+    public void arpookoOikeanMaaranMiinojaKunRuudukkoLiianPieni() {
+       int luku=0;
+        l4.luoRuudut();
+        l4.arvoMiinatLaudalle();
+       for (int i = 0; i < l4.haeRuutuTaulukko().length; i++) {
+            for (int j = 0; j < l4.haeRuutuTaulukko()[0].length; j++) {
+                if (l4.haeRuutuTaulukko()[i][j].haeTila()==9) {
+                    luku++;
+                }
+            }
+        }
+        
+        assertEquals(luku, 1);
+    } 
     @Test
     public void alustaakoOikeinKokoisenPelilaudan() {
         int luku = 0;

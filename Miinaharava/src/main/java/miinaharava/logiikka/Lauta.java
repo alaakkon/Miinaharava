@@ -35,7 +35,7 @@ public class Lauta {
         luoRuudut();
         arvoMiinatLaudalle();
         merkitseVierustat();
-        tulostaTilat();
+       // tulostaTilat();
     }
 
     /**
@@ -77,15 +77,15 @@ public class Lauta {
 
     }
 // Nämä lähtevät pois...
-
-    public void tulostaTilat() {
-        for (int y = 0; y < pelilauta.length; y++) {
-            System.out.println("");
-            for (int x = 0; x < pelilauta[0].length; x++) {
-                System.out.print(pelilauta[y][x].haeTila());
-            }
-        }
-    }
+//
+//    public void tulostaTilat() {
+//        for (int y = 0; y < pelilauta.length; y++) {
+//            System.out.println("");
+//            for (int x = 0; x < pelilauta[0].length; x++) {
+//                System.out.print(pelilauta[y][x].haeTila());
+//            }
+//        }
+//    }
 
 //    public void tulostaAvoimuudet() {
 //        for (int y = 0; y < pelilauta.length; y++) {

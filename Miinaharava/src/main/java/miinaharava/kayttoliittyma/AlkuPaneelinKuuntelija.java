@@ -32,12 +32,7 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int korkeusLukuna = Integer.parseInt(korkeus.getText());
         int leveysLukuna = Integer.parseInt(leveys.getText());
-        if (korkeusLukuna > 30||korkeusLukuna<0) {
-            korkeusLukuna = 30;
-        }
-        if (leveysLukuna > 30||leveysLukuna<0) {
-            leveysLukuna = 30;
-        }
+
         k.luoPelipaneeli(korkeusLukuna, leveysLukuna);
         // System.out.println(Integer.parseInt(korkeus.getText()) + "," + Integer.parseInt(leveys.getText()));
     }
