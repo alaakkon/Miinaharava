@@ -16,7 +16,7 @@ import javax.swing.WindowConstants;
 import miinaharava.logiikka.PelinKulku;
 
 /**
- *
+ * Luokka luo pelipaneelin, pelialustan miinaharavalle.
  */
 public class PeliPaneeli implements Runnable {
 
@@ -43,7 +43,7 @@ public class PeliPaneeli implements Runnable {
     @Override
     public void run() {
         kehys = new JFrame("Miinaharava");
-        kehys.setPreferredSize(new Dimension(1000,1000));
+        kehys.setPreferredSize(new Dimension(1000, 1000));
         kehys.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit();
 
@@ -55,23 +55,26 @@ public class PeliPaneeli implements Runnable {
     private void luoKomponentit() {
         piirtoalusta.addMouseListener(piirtoalusta);
         kehys.getContentPane().add(piirtoalusta);
-        kehys.add(luoLaskuri(), BorderLayout.NORTH);
+        kehys.add(luoAjastin(), BorderLayout.NORTH);
         kehys.add(luoTuomioRuutu(), BorderLayout.SOUTH);
         kehys.pack();
         kehys.setVisible(true);
     }
 
+    /**
+     * Metodi luo paneelille "luukun", jossa tietoa.
+     */
     private JPanel luoTuomioRuutu() {
         JPanel paneeli = new JPanel();
         tuomio = new JTextArea("Voit aloittaa..");
-
         paneeli.add(tuomio);
-
         return paneeli;
 
     }
-
-    private JPanel luoLaskuri() {
+/**
+ * Metodi luo paneelille ajastimen.
+ */
+    private JPanel luoAjastin() {
         JPanel paneeli = new JPanel();
         kello = new JTextField("00:00");
         this.k = new KellonKuuntelija(kello, pelinkulku);

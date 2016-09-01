@@ -35,7 +35,7 @@ public class Lauta {
         luoRuudut();
         arvoMiinatLaudalle();
         merkitseVierustat();
-       // tulostaTilat();
+        // tulostaTilat();
     }
 
     /**
@@ -76,30 +76,7 @@ public class Lauta {
         }
 
     }
-// Nämä lähtevät pois...
-//
-//    public void tulostaTilat() {
-//        for (int y = 0; y < pelilauta.length; y++) {
-//            System.out.println("");
-//            for (int x = 0; x < pelilauta[0].length; x++) {
-//                System.out.print(pelilauta[y][x].haeTila());
-//            }
-//        }
-//    }
 
-//    public void tulostaAvoimuudet() {
-//        for (int y = 0; y < pelilauta.length; y++) {
-//            System.out.println("");
-//            for (int x = 0; x < this.pelilauta[0].length; x++) {
-//
-//                if (pelilauta[y][x].onAuki() == true) {
-//                    System.out.print(pelilauta[y][x].haeTila());
-//                } else {
-//                    System.out.print("X");
-//                }
-//            }
-//        }
-//    }
     /**
      * Metodi merkitsee miinoja sisältävien ruutuihin kyseisen ruutuun
      * kosketuksissa olevien miinojen lukumäärän.

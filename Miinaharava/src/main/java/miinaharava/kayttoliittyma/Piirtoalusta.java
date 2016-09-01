@@ -10,7 +10,7 @@ import miinaharava.logiikka.PelinKulku;
 import miinaharava.logiikka.Ruutu;
 
 /**
- * Luokassa piirretään Miinaharavan pelilauta
+ * Luokassa piirretään Miinaharavan pelilauta.
  *
  */
 public class Piirtoalusta extends JPanel implements MouseListener {
@@ -91,6 +91,13 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         repaint();
     }
 
+    /**
+     * Metodi piirtää miinan syötteen mukaiseen ruutuun.
+     *
+     * @param g
+     * @param y korkeuden koordinaatti
+     * @param x leveyden koordinaatti
+     */
     private void piirraMiina(Graphics g, int y, int x) {
 
         try {
@@ -175,6 +182,14 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         System.out.println("");
     }
 
+    /**
+     * Metodi toimii hiiren klikkauksen jälkeen lukien klikkauksen koordinaatit
+     * pelilaudalla ja huolehtii pelin päättymisestä voittoon.
+     *
+     * @param e hiiren kosketus
+     * @param y pelilaudan korkeuden koordinaatti
+     * @param x pelilaudan leveyden koordinaatti
+     */
     @Override
     public void mousePressed(MouseEvent e) {
 
@@ -214,11 +229,17 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         System.out.println("");
     }
 
+    /**
+     * Metodi tarkistaa pelilaudan avattujen ruutujen lukumäärän.
+     */
     private void paivitaAvattujenMaara() {
         int luku = peli.laskeAvaamattomat();
         pp.tuomio.setText("Avaamattomia ruutuja jäljellä " + luku);
     }
 
+    /**
+     * Metodi lisää pelialustalle tekstin pelin päättyessä pelaajan voittoon.
+     */
     private void lisaaVoittoTeksti() {
         String haettava = ruudut.length + "," + ruudut[0].length + "=" + pp.kello.getText();
         String[] pilkottu = haettava.split("=");
@@ -231,6 +252,9 @@ public class Piirtoalusta extends JPanel implements MouseListener {
         }
     }
 
+    /**
+     * Metodi lisää pelialustalle tekstin pelin päättyessä pelaajan häviöön.
+     */
     private void lisaaHavioTeksti() {
         pp.tuomio.setText("Ähäähää! Miinan kosto on kauhea!");
     }

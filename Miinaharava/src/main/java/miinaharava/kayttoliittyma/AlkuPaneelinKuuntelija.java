@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author anna
+ * Luokka on alkupaneeli luokan tapahtumien kuuntelija
  */
 public class AlkuPaneelinKuuntelija implements ActionListener {
 
@@ -28,6 +28,11 @@ public class AlkuPaneelinKuuntelija implements ActionListener {
         this.k = k;
     }
 
+    /**
+     * Metodi toimii hiirtä painettaessa ja luo pelipaneelin.
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

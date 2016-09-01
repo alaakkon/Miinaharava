@@ -23,17 +23,19 @@ public class TiedostonKasittelija {
 
     ArrayList<String> lista;
     String tiedostoPolku;
+    private String parasAika;
 
     public TiedostonKasittelija() {
 
         this.lista = new ArrayList<String>();
         tiedostoPolku = "tulokset.txt";
         lueTiedosto();
+        this.parasAika = "";
 
     }
 
     /**
-     * Metodi lukee File tulokset tiedoston ArrayList listaksi
+     * Metodi lukee File tulokset tiedoston ArrayList listaksi.
      */
     public ArrayList lueTiedosto() {
         File tulokset = new File(tiedostoPolku);
@@ -87,7 +89,7 @@ public class TiedostonKasittelija {
             File tulokset = new File(tiedostoPolku);
             kirjoittaja = new FileWriter(tulokset);
             for (int i = 0; i < lista.size(); i++) {
-                kirjoittaja.write(lista.get(i));
+                kirjoittaja.write(lista.get(i) + "\n");
             }
             kirjoittaja.close();
         } catch (IOException ex) {
@@ -95,26 +97,58 @@ public class TiedostonKasittelija {
     }
 
     /**
-     * Metodi vertaa lista:lla olevaa tuloksen osan arvon ja palauttaa pienemmän
-     * osan omaavan.
-     *
+     * Metodi hakee paremman tuloksen ja palauttaa sen.
      */
     public String haeParempiTulos(String tulos) {
+        etsiParempiTulos(tulos);
+        return parasAika;
 
-        String[] koko = tulos.split("=");
-        String[] osa = koko[0].split(",");
+    }
+
+    /**
+     * Metodi vertaa lista:lla olevaa tuloksen osan arvon ja palauttaa
+     * muuttujaan pienemmän osan omaavan.
+     *
+     * @param tulos
+     *
+     */
+    private void etsiParempiTulos(String tulos) {
+        String[] jaettuTulos = jaaTulos(tulos);
+        String[] aika = jaaRuudukkoKoordinaatteihin(jaettuTulos[1]);
         for (int i = 0; i < lista.size(); i++) {
             String kohta = lista.get(i);
-            if (kohta.startsWith(koko[0] + "=")) {
-                String[] osa2 = kohta.split("=");
-                if (Integer.parseInt(koko[1]) < Integer.parseInt(osa2[1])) {
-                    return koko[1];
+            if (kohta.startsWith(jaettuTulos[0] + "=")) {
+                String[] koko = jaaTulos(kohta);
+                if (Integer.parseInt(koko[1]) < Integer.parseInt(aika[1])) {
+                    parasAika = koko[1];
                 } else {
-                    return osa2[1];
+                    parasAika = aika[1];
                 }
             }
 
         }
-        return koko[1];
+
+    }
+
+    /**
+     * Metodi jakaa merkkijonon kohdasta =.
+     *
+     * @param tulos
+     * @return
+     */
+    private String[] jaaTulos(String tulos) {
+        return tulos.split("=");
+
+    }
+
+    /**
+     * Metodi jakaa merkkijonon kohdasta ,.
+     *
+     * @param tulos
+     * @return
+     */
+    private String[] jaaRuudukkoKoordinaatteihin(String tulos) {
+        return tulos.split(",");
+
     }
 }

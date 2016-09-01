@@ -40,7 +40,7 @@ public class Ruutu {
     }
 
     /**
-     * Metodi muuttaa tiedon liputuksesta
+     * Metodi muuttaa tiedon liputuksesta.
      */
     public void muutaLiputus() {
 

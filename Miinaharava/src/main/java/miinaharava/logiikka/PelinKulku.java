@@ -30,7 +30,7 @@ public class PelinKulku {
     }
 
     /**
-     * Metodi laskee ja palauttaa avaamattomien ruutujen lukumäärän
+     * Metodi laskee ja palauttaa avaamattomien ruutujen lukumäärän.
      *
      */
     public int laskeAvaamattomat() {
@@ -160,18 +160,19 @@ public class PelinKulku {
         }
 
     }
-
-//    }// tämä kusee
+/**
+ * Metodi tarkistaa onko pelissä arvaattu kaikkien miinojen paikat.
+ */
     private void tarkistaPelinVoittaminen() {
-    int miinoja=lauta.montakoMiinaa();
-    int avaamattomat= laskeAvaamattomat();
-       if(avaamattomat==miinoja){
-           this.peliKaynnissa=false;
-       }
+        int miinoja = lauta.montakoMiinaa();
+        int avaamattomat = laskeAvaamattomat();
+        if (avaamattomat == miinoja) {
+            this.peliKaynnissa = false;
+        }
     }
 
     /**
-     * Metodi tarkastaa ovatko syötteen parametrit sopivat ja muutta ne, jos
+     * Metodi tarkastaa ovatko syötteen parametrit sopivat ja muuttaa ne, jos
      * näin ei ole.
      *
      * @param korkeus

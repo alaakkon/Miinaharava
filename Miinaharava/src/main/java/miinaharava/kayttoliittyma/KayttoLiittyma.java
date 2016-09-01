@@ -13,26 +13,31 @@ import miinaharava.logiikka.PelinKulku;
 
 /**
  *
- * @author alaakkon
+ * Luokka on miinaharava pelin käyttöliittymä.
  */
 public class KayttoLiittyma {
 
     private PeliPaneeli peliPaneeli;
     private AlkuPaneeli alkuPaneeli;
-  //  private PelinKulku peli;
-   // private AlkuPaneelinKuuntelija apk;
+
 
     public KayttoLiittyma() {
         luoAlkupaneeli();
 
     }
-
+   /**
+    * Metodi luo alkupaneelin.
+    */ 
     private void luoAlkupaneeli() {
         alkuPaneeli = new AlkuPaneeli(this);
         alkuPaneeli.run();
        
     }
-
+/**
+ * Metodi luo pelipaneelin.
+ * @param korkeus
+ * @param leveys 
+ */
     public void luoPelipaneeli(int korkeus, int leveys) {
         Piirtoalusta p = new Piirtoalusta(new PelinKulku(korkeus, leveys), peliPaneeli);
         peliPaneeli = new PeliPaneeli(new PelinKulku(korkeus, leveys));

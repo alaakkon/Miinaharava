@@ -13,7 +13,7 @@ import miinaharava.logiikka.PelinKulku;
 
 /**
  *
- * @author alaakkon
+ * Luokka on ajastimen toimintaan liittyvä.
  */
 public class KellonKuuntelija implements ActionListener {
 
@@ -31,6 +31,11 @@ public class KellonKuuntelija implements ActionListener {
 
     }
 
+    /**
+     * Metodi hallinnoi ajan kulua hiiren klikkauksen tapahtuessa.
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
