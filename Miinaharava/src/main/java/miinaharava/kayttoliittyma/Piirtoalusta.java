@@ -184,6 +184,7 @@ public class Piirtoalusta extends JPanel implements MouseListener {
             peli.pelaa(y, x, e.getButton());
             if (peli.onkoPeliKaynnissa()) {
                 paivitaAvattujenMaara();
+
                 repaint();
 
             } else {

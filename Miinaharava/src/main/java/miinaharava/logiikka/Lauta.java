@@ -35,6 +35,7 @@ public class Lauta {
         luoRuudut();
         arvoMiinatLaudalle();
         merkitseVierustat();
+        tulostaTilat();
     }
 
     /**
@@ -70,16 +71,18 @@ public class Lauta {
             sarake = luku % pelilauta[0].length;
             pelilauta[rivi][sarake].muutaTila(9);
         }
+        
     }
 // Nämä lähtevät pois...
-//    public void tulostaTilat() {
-//        for (int y = 0; y < pelilauta.length; y++) {
-    //         System.out.println("");
-    //       for (int x = 0; x < pelilauta[0].length; x++) {
-    //         System.out.print(pelilauta[y][x].haeTila());
-    //   }
-    // }
-    //  }
+
+    public void tulostaTilat() {
+        for (int y = 0; y < pelilauta.length; y++) {
+            System.out.println("");
+            for (int x = 0; x < pelilauta[0].length; x++) {
+                System.out.print(pelilauta[y][x].haeTila());
+            }
+        }
+    }
 
 //    public void tulostaAvoimuudet() {
 //        for (int y = 0; y < pelilauta.length; y++) {

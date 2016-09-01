@@ -56,7 +56,8 @@ public class PelinKulku {
     public void lopetaPeli() {
         peliKaynnissa = false;
     }
-/**
+
+    /**
      * Metodi laskee käytettyjen arvausten lukumäärän
      */
     public int siirtoja() {
@@ -93,13 +94,16 @@ public class PelinKulku {
                 peliKaynnissa = false;
             } else if (lauta.haeRuutuTaulukko()[y][x].haeTila() != 0) {
                 avaaRuutu(y, x);
+                tarkistaPelinLoppuminen();
             } else {
                 avaaNolla(y, x);
+                tarkistaPelinLoppuminen();
             }
         } else if (komento == 3) {
             lauta.haeRuutuTaulukko()[y][x].muutaLiputus();
 
         }
+        System.out.println(laskeAvaamattomat());
         tarkistaPelinLoppuminen();
         siirtoja++;
 
@@ -152,32 +156,15 @@ public class PelinKulku {
 
     }
 
-    //poistetaan myöhemmin
-//    public int annaSuurempiLuku(int a, int b) {
-//        if (a >= b) {
-//            return a;
-//        }
-//        return b;
-//    }
-//
-//    public int annaPienempiLuku(int a, int b) {
-//        if (a <= b) {
-//            return a;
-//        }
-//        return b;
-//    }
-//    public void tulostaStatus throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.() {
-//        lauta.tulostaTilat();
-//    }
-//
-//    public void tulostaTilat() {
-//        lauta.tulostaStatus();
-//    }
+//    }// tämä kusee
     private void tarkistaPelinLoppuminen() {
-        // int luku = lauta.montakoAvaamattomiaJaljella();
-        int luku = laskeAvaamattomat();
-        if (luku < 2) {
+        int kaikki = lauta.haeRuutuTaulukko().length * lauta.haeRuutuTaulukko()[0].length;
+        int avattavat = kaikki - lauta.montakoMiinaa();
+        int avatut = avattavat - laskeAvaamattomat();
+        System.out.println(avatut);
+        if (avatut < 2) {
             peliKaynnissa = false;
+            System.out.println("pk=" + peliKaynnissa);
         }
     }
 }
